@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="./imagenes/favicon.png">
+    <title>Portfolio</title>
+</head>
+<body>
+    <!-- MAIN CONTENT -->
+    <div class="main-container">
+        <!-- NAVBAR DESKTOP -->
+        <section class="navbar-container__desktop">
+            <h1>Flor Nakasone</h1>
+            <nav class="navbar-container__desktop__list">
+                <a href="index.html"><i class="fas fa-home"></i>Home</a>
+                <a href="#aboutme"><i class="fas fa-user-alt"></i>Sobre mi</a>
+                <a href="#skills"><i class="fas fa-briefcase"></i>Conocimientos</a>
+                <a href="#experience"><i class="fas fa-user-alt"></i>Experiencia</a>
+                <a href="#works"><i class="fas fa-laptop-code"></i>Mis proyectos</a>
+                <a href="#contact"><i class="fas fa-envelope"></i>Contacto</a>
+            </nav>
+        </section>
+
+        <div class="full-container">
+            <!-- NAVBAR MOBILE -->
+            <section class="navbar-container__mobile">
+                <nav class="navbar-container__mobile__list">
+                    <label for="navbar" class="navbar-container__mobile__list__label">
+                        <input type="checkbox" id="navbar" class="navbar-input" />
+                        <div class="navbar-open">
+                            <i class="fas fa-bars" aria-hidden="true"></i>
+                        </div>
+                        <div class="navbar-close">
+                            <i class="fas fa-times" aria-hidden="true"></i>
+                        </div>
+                        <div class="navbar-content">
+                            <a href="index.html"><i class="fas fa-home"></i>Home</a>
+                            <a href="#aboutme"><i class="fas fa-user-alt"></i>Sobre mi</a>
+                            <a href="#skills"><i class="fas fa-briefcase"></i>Conocimientos</a>
+                            <a href="#experience"><i class="fas fa-user-alt"></i>Experiencia</a>
+                            <a href="#works"><i class="fas fa-laptop-code"></i>Mis proyectos</a>
+                            <a href="#contact"><i class="fas fa-envelope"></i>Contacto</a>
+                        </div>
+                    </label>
+                </nav>
+            </section>
+            <!-- BANNER -->
+            <section class="banner-container" id="home">
+                <div class="background-image"></div>
+                <div class="banner-content">
+                    <div class="banner-container__main">
+                        <img class="banner-container__main__profile" src="./imagenes/foto_cv.png" alt="profile">
+                        <h2>Hola! Soy Florencia</h2>
+                        <span>FullStack Developer Trainee</span>
+                        <div class="banner-container__main__icons">
+                            <a href="https://github.com/flornakasone" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/flornakasone" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.instagram.com/flor.nakasone/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </div>
+                        <button class="banner-container__main__button">
+                            <a href="#contact">Contactame</a>
+                        </button>
+                    </div>
+                </div>
+                <a class="banner-container__scroll" href="#aboutme">
+                    <span>Scroll Down</span>
+                    <img src="./imagenes/two-arrows-in-angle-pointing-down.svg" alt="arrow">
+                </a>
+            </section>
+
+            <!-- SOBRE MI -->
+            <section class="aboutme-container container" id="aboutme">
+                <h3 class="title-content">Sobre mi</h3>
+                <div class="aboutme-container__main">
+                    <img src="./imagenes/foto_cv.png" alt="profile">
+                    <div class="aboutme-container__main__card">
+                        <div class="aboutme-container__main__card__info">
+                            <p>Soy estudiante de la técnicatura de <span>Análisis de sistemas</span> y de <span>Desarrollo FullStack</span>. Estoy comenzado mi camino en el mundo IT, en búsqueda de mi primera experiencia laboral.</p>
+                            <button data-toggle="modal" data-target="#resume-modal">
+                                <a href="./imagenes/NakasoneFlorencia.png" target="_blank">Mi CV</a>
+                            </button>
+                        </div>
+                        <div class="aboutme-container__main__card__progress">
+                            <div class="aboutme-container__main__card__progress__content">
+                                <h3>HTML</h3>
+                                <div class="aboutme-container__main__card__progress__content__bar">
+                                    <div class="aboutme-container__main__card__progress__content__bar__incomplete"></div>
+                                </div>
+                            </div>
+                            <div class="aboutme-container__main__card__progress__content">
+                                <h3>CSS</h3>
+                                <div class="aboutme-container__main__card__progress__content__bar">
+                                    <div class="aboutme-container__main__card__progress__content__bar__incomplete"></div>
+                                </div>
+                            </div>
+                            <div class="aboutme-container__main__card__progress__content">
+                                <h3>JAVASCRIPT</h3>
+                                <div class="aboutme-container__main__card__progress__content__bar">
+                                    <div class="aboutme-container__main__card__progress__content__bar__incomplete"></div>
+                                </div>
+                            </div>
+                            <div class="aboutme-container__main__card__progress__content">
+                                <h3>PYTHON</h3>
+                                <div class="aboutme-container__main__card__progress__content__bar">
+                                    <div class="aboutme-container__main__card__progress__content__bar__incomplete"></div>
+                                </div>
+                            </div>
+                            <div class="aboutme-container__main__card__progress__content">
+                                <h3>AI / PS</h3>
+                                <div class="aboutme-container__main__card__progress__content__bar">
+                                    <div class="aboutme-container__main__card__progress__content__bar__incomplete"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SKILLS -->
+            <section class="skills-container container" id="skills">
+                <h3 class="title-content">Conocimientos</h3>
+                <div class="skills-container__main">
+                    <div class="skills-container__main__card">
+                        <img src="./imagenes/005-web-design.svg" alt="skills-card">
+                        <h3>HTML</h3>
+                        <p>Estructuras claras y sólidas para un buen posicionamiento.</p>
+                    </div>
+                    <div class="skills-container__main__card">
+                        <img src="./imagenes/004-screens.svg" alt="skills-card">
+                        <h3>CSS</h3>
+                        <p>Diseños responsive y personalizados.</p>
+                    </div>
+                    <div class="skills-container__main__card">
+                        <img src="./imagenes/003-idea.svg" alt="skills-card">
+                        <h3>JS / PYTHON</h3>
+                        <p>Desarrollo de programas funcionales y dinámicos.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- EXPERIENCIA -->
+            <section class="experience-container container" id="experience">
+                <h3 class="title-content">Experiencia</h3>
+                <div class="experience-container__topics">
+                    <div class="experience-container__topics__card">
+                        <div class="experience-container__topics__card__data">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span class="experience-container__topics__card__data__date">2019 - Actualidad</span>
+                            <span class="experience-container__topics__card__data__title">IFTS18</span>
+                            <p class="experience-container__topics__card__data__description"> Tecnicatura en Análisis de Sistemas</p>
+                        </div>
+                        <div class="experience-container__topics__card__data">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span class="experience-container__topics__card__data__date">2020 - Actualidad</span>
+                            <span class="experience-container__topics__card__data__title">RocketCode</span>
+                            <p class="experience-container__topics__card__data__description">Curso de HTML y CSS. </p>
+                        </div>
+                        <div class="experience-container__topics__card__data">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span class="experience-container__topics__card__data__date">2020 - Actualidad</span>
+                            <span class="experience-container__topics__card__data__title">EducaciónIT</span>
+                            <p class="experience-container__topics__card__data__description">Carrera de Desarrollo FullStack</p>
+                        </div>
+                    </div>
+                    <div class="experience-container__topics__card">
+                        <div class="experience-container__topics__card__data">
+                            <i class="fas fa-briefcase"></i>
+                            <span class="experience-container__topics__card__data__date">Actualidad</span>
+                            <span class="experience-container__topics__card__data__title">En búsqueda activa</span>
+                            <p class="experience-container__topics__card__data__description">Buscando mi primera experiencia laboral</p>
+                        </div>
+                        <div class="experience-container__topics__card__data">
+                            <i class="fas fa-briefcase"></i>
+                            <span class="experience-container__topics__card__data__date">Actualidad</span>
+                            <span class="experience-container__topics__card__data__title">Experiencia</span>
+                            <p class="experience-container__topics__card__data__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                        </div>
+                        <div class="experience-container__topics__card__data">
+                            <i class="fas fa-briefcase"></i>
+                            <span class="experience-container__topics__card__data__date">Actualidad</span>
+                            <span class="experience-container__topics__card__data__title">Experiencia</span>
+                            <p class="experience-container__topics__card__data__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PROYECTOS -->
+            <section class="works-container container" id="works">
+                <h3 class="title-content">Mis proyectos</h3>
+                <div class="works-container__topics">
+                    <div class="works-container__topics__card">
+                        <img src="./imagenes/girl-sitting-on-books-with-laptop-by-oblik-studio.svg" alt="">
+                        <div class="works-container__topics__card__mask">
+                            <span>Próximamente</span>
+                        </div>
+                    </div>
+                    <div class="works-container__topics__card">
+                        <img src="./imagenes/laptop-job-boards-by-oblik-studio.svg" alt="">
+                        <div class="works-container__topics__card__mask">
+                            <span>Próximamente</span>
+                        </div>
+                    </div>
+                    <div class="works-container__topics__card">
+                        <img src="./imagenes/girl-sitiing-on-table-conducting-an-interview-by-oblik-studio.svg" alt="">
+                        <div class="works-container__topics__card__mask">
+                            <span>Próximamente</span>
+                        </div>
+                    </div>
+                    <div class="works-container__topics__card">
+                        <img src="./imagenes/movie-video-games-controller-popcorns-by-oblik-studio.svg" alt="">
+                        <div class="works-container__topics__card__mask">
+                            <span>Próximamente</span>
+                        </div>
+                    </div>
+                    <div class="works-container__topics__card">
+                        <img src="./imagenes/girl-sitting-on-armchair-with-laptop-by-oblik-studio.svg" alt="">
+                        <div class="works-container__topics__card__mask">
+                            <span>Próximamente</span>
+                        </div>
+                    </div>
+                    <div class="works-container__topics__card">
+                        <img src="./imagenes/desktop-equipment-by-oblik-studio.svg" alt="">
+                        <div class="works-container__topics__card__mask">
+                            <span>Próximamente</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="works-container__topics__button"><a href="works.html"> Ver todos </a></button>
+            </section>
+
+            <!-- CONTACTO -->
+            <section class="contact-container container" id="contact">
+                <h3 class="title-content">Contacto</h3>
+                <div class="contact-container__main">
+                    <div class="contact-container__main__text">
+                        <span>Estemos en contacto!</span>
+                        <p>Enviame un mensaje y te responderé a la brevedad.</p>
+                        <p>Gracias! ♥</p>
+                    </div>
+                    <form class="contact-container__main__form" action="https://formsubmit.co/flornakasone@gmail.com" method="POST">
+                        <div class="contact-container__main__form__name">
+                            <label for="name">
+                                <input id="name" name="name" type="text" placeholder="Nombre" required>
+                            </label>
+                            <label for="email">
+                                <input id="email" name="email" type="email" placeholder="Email" required>
+                            </label>
+                        </div>
+                        <label class="contact-container__main__form__message" form="message">
+                            <textarea name="message" id="message" placeholder="Mensaje.." required></textarea>
+                        </label>
+                        <button type="submit">Enviar</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- FOOTER -->
+            <section class="footer">
+                <div class="footer-copyright">
+                    2021 <i class="far fa-copyright"></i> Creado por Flor Nakasone 
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/flornakasone" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/flornakasone" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/flor.nakasone" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </section>
+        </div>    
+    </div>
+    <script src="https://kit.fontawesome.com/7aa36192fa.js" crossorigin="anonymous"></script>
+</body>
+</html>
