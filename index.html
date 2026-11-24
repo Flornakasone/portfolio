@@ -1,278 +1,492 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/style.css">
-    <link rel="stylesheet" href="normalize.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="./imagenes/favicon.png">
-    <title>Portfolio</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Florencia Nakasone · QA Engineer SSr</title>
+<meta name="description" content="QA Engineer SSr con 5 años en Core Banking. Testing de APIs, datos, retenciones impositivas y conciliación contable sobre Mambu. Buenos Aires.">
+<meta name="theme-color" content="#F6F5F3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1115" media="(prefers-color-scheme: dark)">
+<script>
+/* Aplica tema guardado y marca que hay JS, antes de pintar */
+document.documentElement.classList.add('js');
+try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t)}}catch(e){}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+@property --ang{syntax:"<angle>";initial-value:0deg;inherits:false}
+:root{
+  --bg:#F6F5F3; --surface:#FFFFFF; --text:#14181F; --muted:#586070; --line:#E3E1DC;
+  --btn-bg:#14181F; --btn-text:#FFFFFF; --focus:#6D4AFF;
+  --violet:#6D4AFF; --pink:#E63B7A; --amber:#E8960C; --teal:#0FA58B; --blue:#2F7DF6;
+  --n1:#5B3DF5; --n2:#D6336C; --n3:#E8860C;
+  --b1:rgba(255,92,138,.34); --b2:rgba(109,74,255,.28); --b3:rgba(255,181,71,.38); --b4:rgba(25,195,166,.24);
+  --shadow:0 6px 24px rgba(20,24,31,.08);
+  --radius:18px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1115; --surface:#171A21; --text:#ECEDEF; --muted:#A3AAB6; --line:#2A2F39;
+    --btn-bg:#ECEDEF; --btn-text:#0F1115; --focus:#B79CFF;
+    --violet:#9B83FF; --pink:#FF6B9D; --amber:#FFB547; --teal:#2CD4B5; --blue:#6AA3FF;
+    --n1:#A38FFF; --n2:#FF7AA8; --n3:#FFB547;
+    --b1:rgba(255,92,138,.22); --b2:rgba(109,74,255,.30); --b3:rgba(255,181,71,.14); --b4:rgba(25,195,166,.16);
+    --shadow:0 6px 24px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1115; --surface:#171A21; --text:#ECEDEF; --muted:#A3AAB6; --line:#2A2F39;
+  --btn-bg:#ECEDEF; --btn-text:#0F1115; --focus:#B79CFF;
+  --violet:#9B83FF; --pink:#FF6B9D; --amber:#FFB547; --teal:#2CD4B5; --blue:#6AA3FF;
+  --n1:#A38FFF; --n2:#FF7AA8; --n3:#FFB547;
+  --b1:rgba(255,92,138,.22); --b2:rgba(109,74,255,.30); --b3:rgba(255,181,71,.14); --b4:rgba(25,195,166,.16);
+  --shadow:0 6px 24px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px;overflow-x:clip}
+body{margin:0;overflow-x:clip;font-family:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.65;font-size:1rem;-webkit-font-smoothing:antialiased;counter-reset:sec}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--btn-bg);color:var(--btn-text);padding:8px 14px;border-radius:8px;z-index:30}
+.skip:focus{left:8px}
+
+/* Barra de progreso */
+.progress{position:fixed;top:0;left:0;height:3px;width:100%;z-index:20;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--violet),var(--pink),var(--amber))}
+
+/* Menú en píldora */
+.nav{position:fixed;top:12px;left:0;right:0;z-index:10;display:flex;justify-content:center;padding:0 12px;pointer-events:none}
+.nav ul{pointer-events:auto;display:flex;gap:2px;list-style:none;margin:0;padding:5px;max-width:100%;overflow-x:auto;scrollbar-width:none;background:color-mix(in srgb,var(--surface) 82%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:999px;box-shadow:var(--shadow)}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a{display:block;white-space:nowrap;text-decoration:none;font-size:.875rem;font-weight:600;color:var(--muted);padding:8px 14px;border-radius:999px;transition:background .2s,color .2s}
+.nav a:hover{color:var(--text);background:color-mix(in srgb,var(--text) 7%,transparent)}
+.nav a.active{color:#fff;background:linear-gradient(135deg,var(--n1),var(--n2))}
+:root[data-theme="dark"] .nav a.active{color:#0F1115}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .nav a.active{color:#0F1115}}
+
+main{max-width:720px;margin:0 auto;padding:0 20px}
+section{padding:60px 0 8px}
+h2{display:flex;align-items:center;gap:12px;font-size:.8125rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:0 0 22px}
+h2::before{counter-increment:sec;content:counter(sec,decimal-leading-zero);font-size:.8125rem;font-weight:800;background:linear-gradient(135deg,var(--n1),var(--n2));-webkit-background-clip:text;background-clip:text;color:transparent}
+h2::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+h3{font-size:1.0625rem;margin:0;font-weight:700}
+p{margin:0 0 14px}
+ul.list{margin:10px 0 0;padding-left:1.1rem}
+ul.list li{margin-bottom:8px}
+ul.list li::marker{color:var(--pink)}
+
+/* Hero */
+.hero{position:relative;text-align:center;padding:120px 0 40px}
+.bg{position:absolute;inset:-60px -50vw auto;height:680px;z-index:-1;overflow:hidden;pointer-events:none;-webkit-mask-image:linear-gradient(to bottom,#000 60%,transparent);mask-image:linear-gradient(to bottom,#000 60%,transparent)}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);will-change:transform}
+.b1{width:340px;height:340px;left:14%;top:30px;background:var(--b1);animation:f1 16s ease-in-out infinite}
+.b2{width:380px;height:380px;right:12%;top:0;background:var(--b2);animation:f2 19s ease-in-out infinite}
+.b3{width:300px;height:300px;left:42%;top:260px;background:var(--b3);animation:f3 22s ease-in-out infinite}
+.b4{width:220px;height:220px;right:30%;top:380px;background:var(--b4);animation:f1 25s ease-in-out infinite reverse}
+@keyframes f1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(50px,40px) scale(1.12)}}
+@keyframes f2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-60px,50px) scale(1.08)}}
+@keyframes f3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-40px,-50px) scale(1.15)}}
+
+.tools{position:absolute;top:70px;right:0;display:flex;gap:8px}
+.tool{cursor:pointer;font:inherit;font-weight:700;font-size:.8125rem;min-width:44px;height:36px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:color-mix(in srgb,var(--surface) 85%,transparent);color:var(--text);box-shadow:0 2px 10px rgba(20,24,31,.06);transition:transform .2s}
+.tool:hover{transform:translateY(-2px)}
+
+.ring{display:inline-block;padding:4px;border-radius:50%;background:conic-gradient(from var(--ang),var(--violet),var(--pink),var(--amber),var(--teal),var(--violet));animation:spin 9s linear infinite;box-shadow:0 10px 36px rgba(109,74,255,.25)}
+@keyframes spin{to{--ang:360deg}}
+.avatar{display:block;width:132px;height:132px;border-radius:50%;object-fit:cover;object-position:50% 20%;border:4px solid var(--bg)}
+h1{font-size:clamp(2.2rem,8.5vw,3.6rem);line-height:1.06;letter-spacing:-.03em;font-weight:800;margin:22px 0 10px}
+h1 .grad{background:linear-gradient(100deg,var(--n1),var(--n2) 60%,var(--n3));-webkit-background-clip:text;background-clip:text;color:transparent}
+.role{font-weight:600;color:var(--muted);margin:0 0 18px}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;list-style:none;padding:0;margin:0 0 24px}
+.chip{--c:var(--violet);display:inline-block;font-size:.8125rem;font-weight:600;padding:5px 12px;border-radius:999px;background:color-mix(in srgb,var(--c) 13%,var(--surface));border:1px solid color-mix(in srgb,var(--c) 38%,var(--line));color:var(--text)}
+
+.hero .chip:nth-child(2){--c:var(--teal)}
+.hero .chip:nth-child(3){--c:var(--amber)}
+.hero .chip:nth-child(4){--c:var(--pink)}
+
+.lead{font-size:1.1875rem;line-height:1.55;max-width:34em;margin:0 auto 26px;font-weight:500}
+
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:520px;margin:0 auto 28px}
+.stat{background:color-mix(in srgb,var(--surface) 88%,transparent);border:1px solid var(--line);border-radius:var(--radius);padding:14px 8px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.stat b{display:block;font-size:1.6rem;line-height:1.1;font-weight:800;background:linear-gradient(135deg,var(--n1),var(--n2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{display:block;font-size:.75rem;font-weight:600;color:var(--muted);margin-top:4px;line-height:1.3}
+
+.cta{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.btn{display:inline-block;text-decoration:none;font-weight:700;font-size:.9375rem;padding:12px 22px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--text);box-shadow:0 2px 10px rgba(20,24,31,.06);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(20,24,31,.12)}
+.btn.primary{background:linear-gradient(135deg,#5B3DF5,#D6336C);color:#fff;border-color:transparent}
+.btn.primary:hover{box-shadow:0 10px 26px rgba(214,51,108,.35)}
+
+/* Tarjetas */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px;margin-bottom:14px;transition:transform .25s,border-color .25s,box-shadow .25s}
+.card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--violet) 45%,var(--line));box-shadow:var(--shadow)}
+.card p:last-child{margin-bottom:0}
+.meta{color:var(--muted);font-size:.9rem;font-weight:500;margin:2px 0 0}
+.head{display:flex;align-items:center;gap:14px}
+.ico{flex:none;width:44px;height:44px;border-radius:13px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--c1),var(--c2))}
+.ico svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ico span{font-weight:800;font-size:1.15rem}
+
+/* Experiencia */
+.job{border-left:2px solid;border-image:linear-gradient(to bottom,var(--violet),var(--pink),transparent) 1;padding:0 0 30px 22px;margin-left:6px;position:relative}
+.job::before{content:"";position:absolute;left:-8px;top:5px;width:14px;height:14px;border-radius:50%;background:linear-gradient(135deg,var(--violet),var(--pink));box-shadow:0 0 0 4px var(--bg)}
+.job:last-child{padding-bottom:0}
+.tag{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.04em;color:var(--violet);margin-bottom:2px}
+
+/* Skills */
+.skillrow{margin-bottom:20px}
+.skillrow h3{font-size:.9375rem;margin-bottom:9px;display:flex;align-items:center;gap:8px}
+.skillrow h3::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--c)}
+.skillrow .chips{justify-content:flex-start;margin:0}
+.skillrow .chip{--c:inherit}
+.s1{--c:var(--violet)} .s2{--c:var(--teal)} .s3{--c:var(--amber)} .s4{--c:var(--pink)} .s5{--c:var(--blue)}
+.skillrow .chip{transition:transform .15s}
+.skillrow .chip:hover{transform:translateY(-2px)}
+
+/* Proyectos */
+.proj a.title{text-decoration:none}
+.proj a.title::after{content:" ↗";color:var(--pink);font-weight:800}
+.proj a.title:hover{text-decoration:underline}
+.proj.todo{border-style:dashed;background:transparent}
+.proj.todo:hover{transform:none;box-shadow:none}
+
+/* Formulario */
+form{display:grid;gap:14px}
+label{font-weight:600;font-size:.9375rem;display:block;margin-bottom:6px}
+input,textarea{width:100%;font:inherit;color:var(--text);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;transition:border-color .2s,box-shadow .2s}
+input:focus,textarea:focus{outline:none;border-color:var(--violet);box-shadow:0 0 0 3px color-mix(in srgb,var(--violet) 25%,transparent)}
+textarea{min-height:130px;resize:vertical}
+.hp{position:absolute;left:-9999px}
+button.btn{cursor:pointer;font:inherit;font-weight:700}
+.ok{display:none;padding:14px 16px;border-radius:12px;border:1px solid var(--teal);background:color-mix(in srgb,var(--teal) 12%,var(--surface));font-weight:600;margin-bottom:14px}
+.ok.show{display:block}
+footer{max-width:720px;margin:0 auto;padding:40px 20px 56px;color:var(--muted);font-size:.875rem;text-align:center}
+
+/* Aparición al hacer scroll */
+.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.js .reveal.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .blob,.ring{animation:none}
+  .js .reveal{opacity:1;transform:none;transition:none}
+  .card,.btn,.tool,.chip{transition:none}
+}
+</style>
 </head>
 <body>
-    <!-- MAIN CONTENT -->
-    <div class="main-container">
-        <!-- NAVBAR DESKTOP -->
-        <section class="navbar-container__desktop">
-            <h1>Flor Nakasone</h1>
-            <nav class="navbar-container__desktop__list">
-                <a href="index.html"><i class="fas fa-home"></i>Home</a>
-                <a href="#aboutme"><i class="fas fa-user-alt"></i>Sobre mi</a>
-                <a href="#skills"><i class="fas fa-briefcase"></i>Conocimientos</a>
-                <a href="#experience"><i class="fas fa-user-alt"></i>Experiencia</a>
-                <a href="#works"><i class="fas fa-laptop-code"></i>Mis proyectos</a>
-                <a href="#contact"><i class="fas fa-envelope"></i>Contacto</a>
-            </nav>
-        </section>
+<a class="skip" href="#contenido" data-en="Skip to content">Ir al contenido</a>
+<div class="progress" id="bar" aria-hidden="true"></div>
 
-        <div class="full-container">
-            <!-- NAVBAR MOBILE -->
-            <section class="navbar-container__mobile">
-                <nav class="navbar-container__mobile__list">
-                    <label for="navbar" class="navbar-container__mobile__list__label">
-                        <input type="checkbox" id="navbar" class="navbar-input" />
-                        <div class="navbar-open">
-                            <i class="fas fa-bars" aria-hidden="true"></i>
-                        </div>
-                        <div class="navbar-close">
-                            <i class="fas fa-times" aria-hidden="true"></i>
-                        </div>
-                        <div class="navbar-content">
-                            <a href="index.html"><i class="fas fa-home"></i>Home</a>
-                            <a href="#aboutme"><i class="fas fa-user-alt"></i>Sobre mi</a>
-                            <a href="#skills"><i class="fas fa-briefcase"></i>Conocimientos</a>
-                            <a href="#experience"><i class="fas fa-user-alt"></i>Experiencia</a>
-                            <a href="#works"><i class="fas fa-laptop-code"></i>Mis proyectos</a>
-                            <a href="#contact"><i class="fas fa-envelope"></i>Contacto</a>
-                        </div>
-                    </label>
-                </nav>
-            </section>
-            <!-- BANNER -->
-            <section class="banner-container" id="home">
-                <div class="background-image"></div>
-                <div class="banner-content">
-                    <div class="banner-container__main">
-                        <img class="banner-container__main__profile" src="./imagenes/foto_cv.png" alt="profile">
-                        <h2>Hola! Soy Florencia</h2>
-                        <span>FullStack Developer Trainee</span>
-                        <div class="banner-container__main__icons">
-                            <a href="https://github.com/flornakasone" target="_blank"><i class="fab fa-github"></i></a>
-                            <a href="https://www.linkedin.com/in/flornakasone" target="_blank"><i class="fab fa-linkedin"></i></a>
-                            <a href="https://www.instagram.com/flor.nakasone/" target="_blank"><i class="fab fa-instagram"></i></a>
-                        </div>
-                        <button class="banner-container__main__button">
-                            <a href="#contact">Contactame</a>
-                        </button>
-                    </div>
-                </div>
-                <a class="banner-container__scroll" href="#aboutme">
-                    <span>Scroll Down</span>
-                    <img src="./imagenes/two-arrows-in-angle-pointing-down.svg" alt="arrow">
-                </a>
-            </section>
+<nav class="nav" aria-label="Principal" data-en-label="Main">
+  <ul>
+    <li><a href="#sobre-mi" data-en="About">Sobre mí</a></li>
+    <li><a href="#experiencia" data-en="Experience">Experiencia</a></li>
+    <li><a href="#dominio" data-en="Domain">Dominio</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#proyectos" data-en="Projects">Proyectos</a></li>
+    <li><a href="#contacto" data-en="Contact">Contacto</a></li>
+  </ul>
+</nav>
 
-            <!-- SOBRE MI -->
-            <section class="aboutme-container container" id="aboutme">
-                <h3 class="title-content">Sobre mi</h3>
-                <div class="aboutme-container__main">
-                    <img src="./imagenes/foto_cv.png" alt="profile">
-                    <div class="aboutme-container__main__card">
-                        <div class="aboutme-container__main__card__info">
-                            <p>Soy estudiante de la técnicatura de <span>Análisis de sistemas</span> y de <span>Desarrollo FullStack</span>. Estoy comenzado mi camino en el mundo IT, en búsqueda de mi primera experiencia laboral.</p>
-                            <button data-toggle="modal" data-target="#resume-modal">
-                                <a href="./imagenes/NakasoneFlorencia.png" target="_blank">Mi CV</a>
-                            </button>
-                        </div>
-                        <div class="aboutme-container__main__card__progress">
-                            <div class="aboutme-container__main__card__progress__content">
-                                <h3>HTML</h3>
-                                <div class="aboutme-container__main__card__progress__content__bar">
-                                    <div class="aboutme-container__main__card__progress__content__bar__incomplete"></div>
-                                </div>
-                            </div>
-                            <div class="aboutme-container__main__card__progress__content">
-                                <h3>CSS</h3>
-                                <div class="aboutme-container__main__card__progress__content__bar">
-                                    <div class="aboutme-container__main__card__progress__content__bar__incomplete"></div>
-                                </div>
-                            </div>
-                            <div class="aboutme-container__main__card__progress__content">
-                                <h3>JAVASCRIPT</h3>
-                                <div class="aboutme-container__main__card__progress__content__bar">
-                                    <div class="aboutme-container__main__card__progress__content__bar__incomplete"></div>
-                                </div>
-                            </div>
-                            <div class="aboutme-container__main__card__progress__content">
-                                <h3>PYTHON</h3>
-                                <div class="aboutme-container__main__card__progress__content__bar">
-                                    <div class="aboutme-container__main__card__progress__content__bar__incomplete"></div>
-                                </div>
-                            </div>
-                            <div class="aboutme-container__main__card__progress__content">
-                                <h3>AI / PS</h3>
-                                <div class="aboutme-container__main__card__progress__content__bar">
-                                    <div class="aboutme-container__main__card__progress__content__bar__incomplete"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+<main id="contenido">
 
-            <!-- SKILLS -->
-            <section class="skills-container container" id="skills">
-                <h3 class="title-content">Conocimientos</h3>
-                <div class="skills-container__main">
-                    <div class="skills-container__main__card">
-                        <img src="./imagenes/005-web-design.svg" alt="skills-card">
-                        <h3>HTML</h3>
-                        <p>Estructuras claras y sólidas para un buen posicionamiento.</p>
-                    </div>
-                    <div class="skills-container__main__card">
-                        <img src="./imagenes/004-screens.svg" alt="skills-card">
-                        <h3>CSS</h3>
-                        <p>Diseños responsive y personalizados.</p>
-                    </div>
-                    <div class="skills-container__main__card">
-                        <img src="./imagenes/003-idea.svg" alt="skills-card">
-                        <h3>JS / PYTHON</h3>
-                        <p>Desarrollo de programas funcionales y dinámicos.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- EXPERIENCIA -->
-            <section class="experience-container container" id="experience">
-                <h3 class="title-content">Experiencia</h3>
-                <div class="experience-container__topics">
-                    <div class="experience-container__topics__card">
-                        <div class="experience-container__topics__card__data">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span class="experience-container__topics__card__data__date">2019 - Actualidad</span>
-                            <span class="experience-container__topics__card__data__title">IFTS18</span>
-                            <p class="experience-container__topics__card__data__description"> Tecnicatura en Análisis de Sistemas</p>
-                        </div>
-                        <div class="experience-container__topics__card__data">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span class="experience-container__topics__card__data__date">2020 - Actualidad</span>
-                            <span class="experience-container__topics__card__data__title">RocketCode</span>
-                            <p class="experience-container__topics__card__data__description">Curso de HTML y CSS. </p>
-                        </div>
-                        <div class="experience-container__topics__card__data">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span class="experience-container__topics__card__data__date">2020 - Actualidad</span>
-                            <span class="experience-container__topics__card__data__title">EducaciónIT</span>
-                            <p class="experience-container__topics__card__data__description">Carrera de Desarrollo FullStack</p>
-                        </div>
-                    </div>
-                    <div class="experience-container__topics__card">
-                        <div class="experience-container__topics__card__data">
-                            <i class="fas fa-briefcase"></i>
-                            <span class="experience-container__topics__card__data__date">Actualidad</span>
-                            <span class="experience-container__topics__card__data__title">En búsqueda activa</span>
-                            <p class="experience-container__topics__card__data__description">Buscando mi primera experiencia laboral</p>
-                        </div>
-                        <div class="experience-container__topics__card__data">
-                            <i class="fas fa-briefcase"></i>
-                            <span class="experience-container__topics__card__data__date">Actualidad</span>
-                            <span class="experience-container__topics__card__data__title">Experiencia</span>
-                            <p class="experience-container__topics__card__data__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-                        </div>
-                        <div class="experience-container__topics__card__data">
-                            <i class="fas fa-briefcase"></i>
-                            <span class="experience-container__topics__card__data__date">Actualidad</span>
-                            <span class="experience-container__topics__card__data__title">Experiencia</span>
-                            <p class="experience-container__topics__card__data__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- PROYECTOS -->
-            <section class="works-container container" id="works">
-                <h3 class="title-content">Mis proyectos</h3>
-                <div class="works-container__topics">
-                    <div class="works-container__topics__card">
-                        <img src="./imagenes/girl-sitting-on-books-with-laptop-by-oblik-studio.svg" alt="">
-                        <div class="works-container__topics__card__mask">
-                            <span>Próximamente</span>
-                        </div>
-                    </div>
-                    <div class="works-container__topics__card">
-                        <img src="./imagenes/laptop-job-boards-by-oblik-studio.svg" alt="">
-                        <div class="works-container__topics__card__mask">
-                            <span>Próximamente</span>
-                        </div>
-                    </div>
-                    <div class="works-container__topics__card">
-                        <img src="./imagenes/girl-sitiing-on-table-conducting-an-interview-by-oblik-studio.svg" alt="">
-                        <div class="works-container__topics__card__mask">
-                            <span>Próximamente</span>
-                        </div>
-                    </div>
-                    <div class="works-container__topics__card">
-                        <img src="./imagenes/movie-video-games-controller-popcorns-by-oblik-studio.svg" alt="">
-                        <div class="works-container__topics__card__mask">
-                            <span>Próximamente</span>
-                        </div>
-                    </div>
-                    <div class="works-container__topics__card">
-                        <img src="./imagenes/girl-sitting-on-armchair-with-laptop-by-oblik-studio.svg" alt="">
-                        <div class="works-container__topics__card__mask">
-                            <span>Próximamente</span>
-                        </div>
-                    </div>
-                    <div class="works-container__topics__card">
-                        <img src="./imagenes/desktop-equipment-by-oblik-studio.svg" alt="">
-                        <div class="works-container__topics__card__mask">
-                            <span>Próximamente</span>
-                        </div>
-                    </div>
-                </div>
-                <button class="works-container__topics__button"><a href="works.html"> Ver todos </a></button>
-            </section>
-
-            <!-- CONTACTO -->
-            <section class="contact-container container" id="contact">
-                <h3 class="title-content">Contacto</h3>
-                <div class="contact-container__main">
-                    <div class="contact-container__main__text">
-                        <span>Estemos en contacto!</span>
-                        <p>Enviame un mensaje y te responderé a la brevedad.</p>
-                        <p>Gracias! ♥</p>
-                    </div>
-                    <form class="contact-container__main__form" action="https://formsubmit.co/flornakasone@gmail.com" method="POST">
-                        <div class="contact-container__main__form__name">
-                            <label for="name">
-                                <input id="name" name="name" type="text" placeholder="Nombre" required>
-                            </label>
-                            <label for="email">
-                                <input id="email" name="email" type="email" placeholder="Email" required>
-                            </label>
-                        </div>
-                        <label class="contact-container__main__form__message" form="message">
-                            <textarea name="message" id="message" placeholder="Mensaje.." required></textarea>
-                        </label>
-                        <button type="submit">Enviar</button>
-                    </form>
-                </div>
-            </section>
-
-            <!-- FOOTER -->
-            <section class="footer">
-                <div class="footer-copyright">
-                    2021 <i class="far fa-copyright"></i> Creado por Flor Nakasone 
-                </div>
-                <div class="footer-links">
-                    <a href="https://github.com/flornakasone" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/flornakasone" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://www.instagram.com/flor.nakasone" target="_blank"><i class="fab fa-instagram"></i></a>
-                </div>
-            </section>
-        </div>    
+  <header class="hero">
+    <div class="bg" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div></div>
+    <div class="tools">
+      <button class="tool" id="btn-lang" type="button" aria-label="Switch to English">EN</button>
+      <button class="tool" id="btn-theme" type="button" aria-label="Cambiar a modo oscuro">☾</button>
     </div>
-    <script src="https://kit.fontawesome.com/7aa36192fa.js" crossorigin="anonymous"></script>
+    <div class="ring"><img class="avatar" src="foto.jpg" width="132" height="132" alt="Florencia Nakasone"></div>
+    <h1>Florencia <span class="grad">Nakasone</span></h1>
+    <p class="role" data-en="Semi-Senior QA Engineer · Buenos Aires">QA Engineer SSr · Buenos Aires</p>
+    <ul class="chips" aria-label="Áreas" data-en-label="Areas">
+      <li class="chip">Core Banking</li>
+      <li class="chip" data-en="APIs and SQL">APIs y SQL</li>
+      <li class="chip" data-en="Tax withholdings">Retenciones impositivas</li>
+      <li class="chip" data-en="AI testing (in training)">Testing con IA (en formación)</li>
+    </ul>
+    <p class="lead" data-en="QA Engineer with 5 years in Core Banking: REST API testing, data validation with SQL, automated BDD cases and end-to-end testing on Mambu. My strongest areas are tax withholdings and accounting reconciliation. I'm looking for QA and Technical Functional Analyst roles in fintech and banking.">QA Engineer con 5 años en Core Banking: testing de APIs REST, validación de datos con SQL, casos BDD automatizados y pruebas end to end sobre Mambu. Mi fuerte está en retenciones impositivas y conciliación contable. Busco roles de QA y de Analista Técnico Funcional en fintech y banca.</p>
+    <div class="stats">
+      <div class="stat"><b>5</b><span data-en="years in QA">años en QA</span></div>
+      <div class="stat"><b data-en="Semi-Sr">SSr</b><span data-en="from Trainee level">desde Trainee</span></div>
+      <div class="stat"><b>Mambu</b><span>Core Banking</span></div>
+    </div>
+    <div class="cta">
+      <a class="btn primary" href="https://www.linkedin.com/in/flornakasone/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/Flornakasone" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="Florencia_Nakasone_CV.pdf" target="_blank" rel="noopener" data-en="View CV (PDF, in Spanish)">Ver CV (PDF)</a>
+    </div>
+  </header>
+
+  <section id="sobre-mi" aria-labelledby="t-sobre">
+    <h2 id="t-sobre" data-en="About me">Sobre mí</h2>
+    <p data-en="I started in QA as a Trainee on the Core Banking team at Naranja X and worked up to Semi-Senior. I do functional, smoke, regression and end-to-end testing on REST APIs, microservices, databases and web and mobile apps. I report defects working alongside Development.">Empecé en QA como Trainee en el equipo de Core Banking de Naranja X y llegué a SSr. Hago testing funcional, smoke, regresión y end to end sobre APIs REST, microservicios, base de datos y apps web y mobile. Reporto los defectos trabajando junto a Desarrollo.</p>
+    <p data-en="My work sat between QA and functional analysis: I took part in requirements gathering with Tax, Accounting and Development to define test scenarios before development.">Mi trabajo estuvo en el cruce entre QA y análisis funcional: participé en el relevamiento con Impuestos, Contabilidad y Desarrollo para definir escenarios de prueba antes del desarrollo.</p>
+    <p data-en="I use Claude, GitHub Copilot and Jira Rovo AI day to day, and I'm taking a course on AI testing and autonomous agents.">Uso Claude, GitHub Copilot y Jira Rovo AI en el día a día, y estoy cursando una formación de testing con IA y agentes autónomos.</p>
+    <div class="card" style="margin-top:20px">
+      <h3 data-en="Education">Formación</h3>
+      <ul class="list">
+        <li data-en="Higher Technical Degree in Systems Analysis, IFTS N°18 (final stage, 1 course pending)">Tecnicatura Superior en Análisis de Sistemas, IFTS N°18 (etapa final, 1 materia pendiente)</li>
+        <li data-en="TestingAI: Strategic QA with Autonomous Agents and Data Analysis, Academia QA (in progress, ends Dec 2026)">TestingAI: QA Estratégico con Agentes Autónomos y Análisis de Datos, Academia QA (en curso, finaliza dic. 2026)</li>
+        <li data-en="Scrum Foundation Professional Certificate (SFPC), CertiProf, 2020">Scrum Foundation Professional Certificate (SFPC), CertiProf, 2020</li>
+        <li data-en="English: advanced reading and writing (EF SET C1), intermediate conversation">Inglés: lectura y escritura avanzada (EF SET C1), conversación intermedia</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="experiencia" aria-labelledby="t-exp">
+    <h2 id="t-exp" data-en="Experience">Experiencia</h2>
+
+    <article class="job">
+      <p class="tag" data-en="2023 – JUN 2026">2023 – JUN. 2026</p>
+      <h3 data-en="Semi-Senior QA Engineer · Naranja X">QA Engineer SSr · Naranja X</h3>
+      <p class="meta" data-en="Core Banking, Mambu integration with internal services">Core Banking, integración de Mambu con servicios internos</p>
+      <ul class="list">
+        <li data-en="Functional, integration, regression and end-to-end tests on the withholdings flow: loading of tax registries (AWS and database), calculation in microservices and APIs, impact on the Mambu account and validation in the app.">Pruebas funcionales, de integración, regresión y end to end del flujo de retenciones: carga de padrones (AWS y base de datos), cálculo en microservicios y APIs, impacto en la cuenta en Mambu y validación en la app.</li>
+        <li data-en="Validation of the daily accounting report sent to the ERP: totals per transaction channel, accounting account by type and Debit/Credit entries, reconciling CSV files against the database with SQL.">Validación del reporte contable diario que se enviaba al ERP: suma por canal de transacción, cuenta contable según tipo y movimientos al Debe y al Haber, conciliando CSV contra la base con SQL.</li>
+        <li data-en="Incident analysis with Datadog logs and SQL queries. I found withholdings applied wrongly because of outdated AFIP registries, plus rounding and cache errors.">Análisis de incidentes con logs en Datadog y consultas SQL. Encontré retenciones mal aplicadas por padrones de AFIP desactualizados, además de errores de redondeo y de caché.</li>
+        <li data-en="Automated BDD/Gherkin cases for non-functional validations of microservices (auth, headers, schemas, response times), run on every deploy with the team's internal framework.">Casos BDD/Gherkin automatizados para validaciones no funcionales de microservicios (auth, headers, esquemas, tiempos de respuesta), corridos en cada deploy con el framework interno del equipo.</li>
+        <li data-en="REST API testing with Postman, internal web back office testing, and checks of the mobile app on iOS (BrowserStack) and Android (emulator).">Testing de APIs REST con Postman, pruebas del back office web y verificaciones de la app mobile en iOS (BrowserStack) y Android (emulador).</li>
+      </ul>
+    </article>
+
+    <article class="job">
+      <p class="tag">2021 – 2023</p>
+      <h3 data-en="Junior QA Engineer · Naranja X">QA Engineer Jr · Naranja X</h3>
+      <p class="meta" data-en="Core Banking, internal services">Core Banking, servicios internos</p>
+      <ul class="list">
+        <li data-en="Functional and regression tests on REST APIs with Postman, and data validation with SQL in DBeaver.">Pruebas funcionales y de regresión sobre APIs REST con Postman, y validación de datos con SQL en DBeaver.</li>
+        <li data-en="BDD/Gherkin scenarios for provincial withholdings, managed in Jira and Zephyr and documented in Confluence.">Escenarios BDD/Gherkin para retenciones provinciales, gestionados en Jira y Zephyr y documentados en Confluence.</li>
+      </ul>
+    </article>
+
+    <article class="job">
+      <p class="tag">2021</p>
+      <h3>Operations Analyst · Choiz</h3>
+      <p class="meta">Healthtech</p>
+      <ul class="list">
+        <li data-en="Customer onboarding, coordination with health insurers (obras sociales) and pharmacies, and support over WhatsApp Business.">Onboarding de clientas, coordinación con obras sociales y farmacias, y atención por WhatsApp Business.</li>
+      </ul>
+    </article>
+  </section>
+
+  <section id="dominio" aria-labelledby="t-dom">
+    <h2 id="t-dom" data-en="Domain">Dominio</h2>
+    <div class="card">
+      <div class="head">
+        <div class="ico" style="--c1:#6D4AFF;--c2:#2F7DF6" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 10 12 4l9 6"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8"/><path d="M3 20h18"/></svg></div>
+        <div>
+          <h3 data-en="Core Banking and Mambu">Core Banking y Mambu</h3>
+          <p class="meta" data-en="Mambu integration with internal services">Integración de Mambu con servicios internos</p>
+        </div>
+      </div>
+      <p style="margin-top:12px" data-en="I tested the full path of an operation: the input data, the calculation in microservices, the impact on the account in Mambu, and what shows up in the app.">Probé el recorrido completo de una operación: el dato de entrada, el cálculo en microservicios, el impacto en la cuenta en Mambu y lo que ve el cliente en la app.</p>
+    </div>
+    <div class="card">
+      <div class="head">
+        <div class="ico" style="--c1:#E8960C;--c2:#E63B7A" aria-hidden="true"><span>%</span></div>
+        <div>
+          <h3 data-en="Tax withholdings">Retenciones impositivas</h3>
+          <p class="meta">IVA, IIBB, SIRCREB, SIRTAC, ARBA</p>
+        </div>
+      </div>
+      <p style="margin-top:12px" data-en="VAT and IIBB withholdings on merchants and SIRCREB on savings accounts, in pesos and dollars. Includes loading tax registries and testing rate edits in the back office.">Retenciones de IVA e IIBB sobre comercios y SIRCREB sobre cajas de ahorro, en pesos y dólares. Incluye la carga de padrones y las pruebas de edición de alícuotas en el back office.</p>
+    </div>
+    <div class="card">
+      <div class="head">
+        <div class="ico" style="--c1:#0FA58B;--c2:#2F7DF6" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 8h14l-3-3"/><path d="M20 16H6l3 3"/></svg></div>
+        <div>
+          <h3 data-en="Accounting reconciliation">Conciliación contable</h3>
+          <p class="meta" data-en="ERP integration · basic accounting">Integración con ERP · contabilidad básica</p>
+        </div>
+      </div>
+      <p style="margin-top:12px" data-en="Validation of the daily accounting report: accounting account by type (asset, liability, income) and Debit/Credit entries, reconciling CSV files against the database with SQL.">Validación del reporte contable diario: asignación de cuenta contable según tipo (activo, pasivo, ingreso) y movimientos al Debe y al Haber, conciliando CSV contra la base con SQL.</p>
+    </div>
+  </section>
+
+  <section id="skills" aria-labelledby="t-skills">
+    <h2 id="t-skills" data-en="QA skills and tools">Skills de QA y herramientas</h2>
+    <div class="skillrow s1">
+      <h3>Testing</h3>
+      <ul class="chips">
+        <li class="chip" data-en="Functional">Funcional</li><li class="chip">Smoke</li><li class="chip" data-en="Regression">Regresión</li><li class="chip" data-en="Integration">Integración</li><li class="chip">E2E</li><li class="chip" data-en="Exploratory">Exploratorio</li><li class="chip" data-en="Web and mobile">Web y mobile</li><li class="chip" data-en="Test case design">Diseño de casos</li><li class="chip">BDD / Gherkin</li><li class="chip" data-en="Defect reporting">Reporte de defectos</li>
+      </ul>
+    </div>
+    <div class="skillrow s2">
+      <h3 data-en="APIs and databases">APIs y bases de datos</h3>
+      <ul class="chips">
+        <li class="chip">APIs REST</li><li class="chip">Postman</li><li class="chip">SQL</li><li class="chip">PostgreSQL</li><li class="chip">MySQL</li><li class="chip">DBeaver</li>
+      </ul>
+    </div>
+    <div class="skillrow s3">
+      <h3 data-en="Tools">Herramientas</h3>
+      <ul class="chips">
+        <li class="chip">Jira</li><li class="chip">Zephyr</li><li class="chip">BSTM</li><li class="chip">Confluence</li><li class="chip">Git</li><li class="chip">GitLab</li><li class="chip">BrowserStack</li><li class="chip">Android Studio</li>
+      </ul>
+    </div>
+    <div class="skillrow s4">
+      <h3 data-en="Infrastructure and monitoring">Infraestructura y monitoreo</h3>
+      <ul class="chips">
+        <li class="chip">AWS S3</li><li class="chip">AWS SQS</li><li class="chip">Datadog</li>
+      </ul>
+    </div>
+    <div class="skillrow s5">
+      <h3 data-en="AI and methodologies">IA y metodologías</h3>
+      <ul class="chips">
+        <li class="chip">Claude</li><li class="chip">GitHub Copilot</li><li class="chip">Jira Rovo AI</li><li class="chip">Scrum</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="proyectos" aria-labelledby="t-proy">
+    <h2 id="t-proy" data-en="Projects">Proyectos</h2>
+
+    <article class="card proj">
+      <h3><a class="title" href="https://github.com/Flornakasone/minimoda-test" target="_blank" rel="noopener">minimoda-test</a></h3>
+      <p class="meta" data-en="AI testing · Academia QA">Testing con IA · Academia QA</p>
+      <p style="margin-top:10px" data-en="Practice work from the TestingAI course (Academia QA) on MiniModa, a fictional online store. Class 1: test cases for the sign-up form written with AI and loaded in Qase, with password and age boundary values. Class 2: an agent using Playwright MCP and a custom MCP to generate test cases, with measured times and the limits I found, such as made-up data that I corrected by hand against the real store.">Práctica del curso TestingAI (Academia QA) sobre MiniModa, una tienda online ficticia. Clase 1: casos de prueba del formulario de registro hechos con IA y cargados en Qase, con valores límite de contraseña y edad. Clase 2: agente con Playwright MCP y un MCP propio para generar casos de prueba, con tiempos medidos y los límites que encontré, como datos inventados que corregí a mano contra la tienda real.</p>
+    </article>
+
+    <article class="card proj">
+      <h3><a class="title" href="https://github.com/Flornakasone/job-finder-bot-template" target="_blank" rel="noopener">job-finder-bot-template</a></h3>
+      <p class="meta" data-en="AI automation">Automatización con IA</p>
+      <p style="margin-top:10px" data-en="Job-search agent that I designed with AI. Every day it reviews about 1,000 job postings, keeps the ones that fit the profile and sends a Telegram summary with a match % and an evaluation of which requirements are met and which are missing. The AI wrote the code: I defined the acceptance criteria, reviewed every change and checked the model's answers against the text of each posting. More than 500 tests. It runs on GitHub Actions at no cost and is published as a template so other people can use it.">Agente de búsqueda laboral que diseñé con IA. Cada día revisa unas 1.000 ofertas, se queda con las que encajan con el perfil y manda a Telegram un resumen con % de match y una evaluación de qué requisitos se cumplen y cuáles faltan. La IA escribió el código: yo definí los criterios de aceptación, revisé cada cambio y verifiqué las respuestas del modelo contra el texto de cada aviso. Más de 500 tests. Corre en GitHub Actions, sin costo, y está publicado como plantilla para que otras personas lo usen.</p>
+    </article>
+  </section>
+
+  <section id="contacto" aria-labelledby="t-cont">
+    <h2 id="t-cont" data-en="Contact">Contacto</h2>
+    <p data-en="Write me and I'll reply by email. You can also find me on <a href='https://www.linkedin.com/in/flornakasone/' target='_blank' rel='noopener'>LinkedIn</a>.">Escribime y te respondo por mail. También me encontrás en <a href="https://www.linkedin.com/in/flornakasone/" target="_blank" rel="noopener">LinkedIn</a>.</p>
+    <p id="ok" class="ok" role="status" data-en="Message sent. Thank you, I'll reply soon.">Mensaje enviado. Gracias, te respondo pronto.</p>
+    <form action="https://formsubmit.co/flornakasone@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="Mensaje desde tu portfolio">
+      <input type="hidden" name="_next" value="https://flornakasone.github.io/portfolio/?enviado=1#contacto">
+      <input type="hidden" name="_template" value="box">
+      <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div>
+        <label for="nombre" data-en="Name">Nombre</label>
+        <input id="nombre" name="name" type="text" autocomplete="name" required>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div>
+        <label for="mensaje" data-en="Message">Mensaje</label>
+        <textarea id="mensaje" name="message" required></textarea>
+      </div>
+      <button class="btn primary" type="submit" data-en="Send message">Enviar mensaje</button>
+    </form>
+  </section>
+
+</main>
+
+<footer>
+  <p>© <span id="anio">2026</span> Florencia Nakasone</p>
+</footer>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  document.getElementById('anio').textContent = new Date().getFullYear();
+  if (new URLSearchParams(location.search).get('enviado') === '1') {
+    document.getElementById('ok').classList.add('show');
+  }
+
+  function store(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+  function load(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+
+  /* ---------- Idioma ---------- */
+  var nodes = document.querySelectorAll('[data-en]');
+  var labels = document.querySelectorAll('[data-en-label]');
+  var btnLang = document.getElementById('btn-lang');
+  var titles = {
+    es: 'Florencia Nakasone · QA Engineer SSr',
+    en: 'Florencia Nakasone · Semi-Senior QA Engineer'
+  };
+  nodes.forEach(function(n){ n.setAttribute('data-es', n.innerHTML); });
+  labels.forEach(function(n){ n.setAttribute('data-es-label', n.getAttribute('aria-label')); });
+
+  function setLang(lang){
+    var en = lang === 'en';
+    nodes.forEach(function(n){ n.innerHTML = en ? n.getAttribute('data-en') : n.getAttribute('data-es'); });
+    labels.forEach(function(n){ n.setAttribute('aria-label', en ? n.getAttribute('data-en-label') : n.getAttribute('data-es-label')); });
+    root.lang = en ? 'en' : 'es';
+    document.title = titles[lang];
+    btnLang.textContent = en ? 'ES' : 'EN';
+    btnLang.setAttribute('aria-label', en ? 'Cambiar a español' : 'Switch to English');
+    updateThemeBtn();
+    store('lang', lang);
+  }
+  btnLang.addEventListener('click', function(){
+    setLang(root.lang === 'en' ? 'es' : 'en');
+  });
+
+  /* ---------- Tema ---------- */
+  var btnTheme = document.getElementById('btn-theme');
+  var mq = window.matchMedia('(prefers-color-scheme: dark)');
+  function currentTheme(){
+    return root.getAttribute('data-theme') || (mq.matches ? 'dark' : 'light');
+  }
+  function updateThemeBtn(){
+    var dark = currentTheme() === 'dark';
+    var en = root.lang === 'en';
+    btnTheme.textContent = dark ? '☀' : '☾';
+    btnTheme.setAttribute('aria-label', dark
+      ? (en ? 'Switch to light mode' : 'Cambiar a modo claro')
+      : (en ? 'Switch to dark mode' : 'Cambiar a modo oscuro'));
+  }
+  btnTheme.addEventListener('click', function(){
+    var next = currentTheme() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    store('theme', next);
+    updateThemeBtn();
+  });
+  if (mq.addEventListener) mq.addEventListener('change', updateThemeBtn);
+
+  /* ---------- Barra de progreso ---------- */
+  var bar = document.getElementById('bar');
+  function onScroll(){
+    var h = root.scrollHeight - root.clientHeight;
+    bar.style.transform = 'scaleX(' + (h > 0 ? Math.min(1, window.scrollY / h) : 0) + ')';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* ---------- Aparición al scroll y menú activo ---------- */
+  var revealEls = document.querySelectorAll('section > *, .job, .hero .stats, .hero .cta');
+  revealEls.forEach(function(el){ el.classList.add('reveal'); });
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:0.08, rootMargin:'0px 0px -6% 0px'});
+    revealEls.forEach(function(el){ io.observe(el); });
+
+    var links = document.querySelectorAll('.nav a');
+    var map = {};
+    links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+    var spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) {
+          links.forEach(function(a){ a.classList.remove('active'); a.removeAttribute('aria-current'); });
+          var a = map[e.target.id];
+          if (a) { a.classList.add('active'); a.setAttribute('aria-current','true'); }
+        }
+      });
+    }, {rootMargin:'-40% 0px -55% 0px'});
+    document.querySelectorAll('main section[id]').forEach(function(s){ spy.observe(s); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* Inicio: idioma guardado (por defecto español) */
+  setLang(load('lang') === 'en' ? 'en' : 'es');
+})();
+</script>
 </body>
 </html>
