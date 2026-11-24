@@ -359,13 +359,9 @@ footer{max-width:720px;margin:0 auto;padding:40px 20px 56px;color:var(--muted);f
 
   <section id="contacto" aria-labelledby="t-cont">
     <h2 id="t-cont" data-en="Contact">Contacto</h2>
-    <p data-en="Write me and I'll reply by email. You can also find me on <a href='https://www.linkedin.com/in/flornakasone/' target='_blank' rel='noopener'>LinkedIn</a>.">Escribime y te respondo por mail. También me encontrás en <a href="https://www.linkedin.com/in/flornakasone/" target="_blank" rel="noopener">LinkedIn</a>.</p>
-    <p id="ok" class="ok" role="status" data-en="Message sent. Thank you, I'll reply soon.">Mensaje enviado. Gracias, te respondo pronto.</p>
-    <form action="https://formsubmit.co/flornakasone@gmail.com" method="POST">
-      <input type="hidden" name="_subject" value="Mensaje desde tu portfolio">
-      <input type="hidden" name="_next" value="https://flornakasone.github.io/portfolio/?enviado=1#contacto">
-      <input type="hidden" name="_template" value="box">
-      <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <p data-en="Write me and I'll reply by email.">Escribime y te respondo por mail.</p>
+    <form id="form-contacto">
+      <input class="hp" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div>
         <label for="nombre" data-en="Name">Nombre</label>
         <input id="nombre" name="name" type="text" autocomplete="name" required>
@@ -380,6 +376,8 @@ footer{max-width:720px;margin:0 auto;padding:40px 20px 56px;color:var(--muted);f
       </div>
       <button class="btn primary" type="submit" data-en="Send message">Enviar mensaje</button>
     </form>
+    <p id="form-status" class="ok" role="status" style="margin-top:14px"></p>
+    <p class="meta" style="margin-top:14px" data-en="Or write to <a href='mailto:flornakasone@gmail.com'>flornakasone@gmail.com</a>">O escribime a <a href="mailto:flornakasone@gmail.com">flornakasone@gmail.com</a></p>
   </section>
 
 </main>
@@ -392,9 +390,6 @@ footer{max-width:720px;margin:0 auto;padding:40px 20px 56px;color:var(--muted);f
 (function(){
   var root = document.documentElement;
   document.getElementById('anio').textContent = new Date().getFullYear();
-  if (new URLSearchParams(location.search).get('enviado') === '1') {
-    document.getElementById('ok').classList.add('show');
-  }
 
   function store(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
   function load(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
@@ -483,6 +478,40 @@ footer{max-width:720px;margin:0 auto;padding:40px 20px 56px;color:var(--muted);f
   } else {
     revealEls.forEach(function(el){ el.classList.add('in'); });
   }
+
+  /* ---------- Formulario de contacto ---------- */
+  var WEB3FORMS_KEY = '35eae07a-666a-457e-a73c-e715b13c5c8a';
+  var MAIL = 'flornakasone@gmail.com';
+  var form = document.getElementById('form-contacto');
+  var statusEl = document.getElementById('form-status');
+  var MSG = {
+    es: {sending:'Enviando…', ok:'Mensaje enviado. Gracias, te respondo pronto.', fail:'No se pudo enviar. Escribime a ' + MAIL + '.', mailto:'Se abrió tu app de correo para terminar el envío. Si no se abrió, escribime a ' + MAIL + '.'},
+    en: {sending:'Sending…', ok:"Message sent. Thank you, I'll reply soon.", fail:'It could not be sent. Please write to ' + MAIL + '.', mailto:'Your email app opened so you can finish sending. If it did not open, write to ' + MAIL + '.'}
+  };
+  function say(k){
+    statusEl.textContent = MSG[root.lang === 'en' ? 'en' : 'es'][k];
+    statusEl.classList.add('show');
+  }
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var f = new FormData(form);
+    if (f.get('botcheck')) return;
+    var name = f.get('name'), email = f.get('email'), message = f.get('message');
+    if (!WEB3FORMS_KEY) {
+      var body = message + '\n\n- ' + name + ' (' + email + ')';
+      location.href = 'mailto:' + MAIL + '?subject=' + encodeURIComponent('Contacto desde tu portfolio') + '&body=' + encodeURIComponent(body);
+      say('mailto');
+      return;
+    }
+    say('sending');
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify({access_key: WEB3FORMS_KEY, subject: 'Mensaje desde tu portfolio', from_name: 'Portfolio', name: name, email: email, message: message, botcheck: ''})
+    }).then(function(r){ return r.json(); }).then(function(d){
+      if (d && d.success) { form.reset(); say('ok'); } else { say('fail'); }
+    }).catch(function(){ say('fail'); });
+  });
 
   /* Inicio: idioma guardado (por defecto español) */
   setLang(load('lang') === 'en' ? 'en' : 'es');
