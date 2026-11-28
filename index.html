@@ -16,8 +16,8 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Florencia Nakasone, QA Engineer SSr, Buenos Aires">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#F6F5F3" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0F1115" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#EDE1D1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1A1214" media="(prefers-color-scheme: dark)">
 <script>
 /* Aplica tema guardado y marca que hay JS, antes de pintar */
 document.documentElement.classList.add('js');
@@ -27,213 +27,240 @@ try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark'){document.doc
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-@property --ang{syntax:"<angle>";initial-value:0deg;inherits:false}
 :root{
-  --bg:#F6F5F3; --surface:#FFFFFF; --text:#14181F; --muted:#586070; --line:#E3E1DC;
-  --btn-bg:#14181F; --btn-text:#FFFFFF; --focus:#6D4AFF;
-  --violet:#6D4AFF; --pink:#E63B7A; --amber:#E8960C; --teal:#0FA58B; --blue:#2F7DF6;
-  --n1:#5B3DF5; --n2:#D6336C; --n3:#E8860C;
-  --b1:rgba(255,92,138,.34); --b2:rgba(109,74,255,.28); --b3:rgba(255,181,71,.38); --b4:rgba(25,195,166,.24);
-  --shadow:0 6px 24px rgba(20,24,31,.08);
-  --radius:18px;
+  --bg:#EDE1D1; --surface:#F6EEE2; --text:#3E1921; --muted:#6B4A50; --line:#D6C6B1;
+  --eyebrow:#7F2230; --acc:#D9401C; --dots:rgba(62,25,33,.16);
+  --blue:#90ADBF; --blue-bg:#D3DEE5; --olive-t:#7A5A12; --olive-bg:#E6D5A8; --olive:#A67926;
+  --btn-bg:#3E1921; --btn-text:#EDE1D1;
+  --term:#121011; --term-text:#F3E9DB; --term-dim:#A39A92; --term-line:#2B2426; --term-ok:#FF6A3D; --term-key:#90ADBF;
+  --shadow:0 14px 40px rgba(62,25,33,.16);
+  --radius:16px;
+  --mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --bg:#0F1115; --surface:#171A21; --text:#ECEDEF; --muted:#A3AAB6; --line:#2A2F39;
-    --btn-bg:#ECEDEF; --btn-text:#0F1115; --focus:#B79CFF;
-    --violet:#9B83FF; --pink:#FF6B9D; --amber:#FFB547; --teal:#2CD4B5; --blue:#6AA3FF;
-    --n1:#A38FFF; --n2:#FF7AA8; --n3:#FFB547;
-    --b1:rgba(255,92,138,.22); --b2:rgba(109,74,255,.30); --b3:rgba(255,181,71,.14); --b4:rgba(25,195,166,.16);
-    --shadow:0 6px 24px rgba(0,0,0,.35);
+    --bg:#1A1214; --surface:#251A1D; --text:#F1E6D6; --muted:#BBA79F; --line:#3A2A2E;
+    --eyebrow:#FF8A66; --acc:#FF6A3D; --dots:rgba(241,230,214,.10);
+    --blue-bg:#27343C; --olive-t:#E0B95A; --olive-bg:#3A2F14;
+    --btn-bg:#F1E6D6; --btn-text:#1A1214;
+    --term:#0B090A; --shadow:0 14px 40px rgba(0,0,0,.45);
   }
 }
 :root[data-theme="dark"]{
-  --bg:#0F1115; --surface:#171A21; --text:#ECEDEF; --muted:#A3AAB6; --line:#2A2F39;
-  --btn-bg:#ECEDEF; --btn-text:#0F1115; --focus:#B79CFF;
-  --violet:#9B83FF; --pink:#FF6B9D; --amber:#FFB547; --teal:#2CD4B5; --blue:#6AA3FF;
-  --n1:#A38FFF; --n2:#FF7AA8; --n3:#FFB547;
-  --b1:rgba(255,92,138,.22); --b2:rgba(109,74,255,.30); --b3:rgba(255,181,71,.14); --b4:rgba(25,195,166,.16);
-  --shadow:0 6px 24px rgba(0,0,0,.35);
+  --bg:#1A1214; --surface:#251A1D; --text:#F1E6D6; --muted:#BBA79F; --line:#3A2A2E;
+  --eyebrow:#FF8A66; --acc:#FF6A3D; --dots:rgba(241,230,214,.10);
+  --blue-bg:#27343C; --olive-t:#E0B95A; --olive-bg:#3A2F14;
+  --btn-bg:#F1E6D6; --btn-text:#1A1214;
+  --term:#0B090A; --shadow:0 14px 40px rgba(0,0,0,.45);
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:84px;overflow-x:clip}
-body{margin:0;overflow-x:clip;font-family:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.65;font-size:1rem;-webkit-font-smoothing:antialiased;counter-reset:sec}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:96px;overflow-x:clip}
+body{font-family:"Manrope","Inter","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;font-size:17px;overflow-x:clip;
+  background-image:radial-gradient(circle,var(--dots) 1px,transparent 1.4px);background-size:22px 22px;-webkit-font-smoothing:antialiased}
 a{color:inherit}
-:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:6px}
-.skip{position:absolute;left:-999px;top:8px;background:var(--btn-bg);color:var(--btn-text);padding:8px 14px;border-radius:8px;z-index:30}
+:focus-visible{outline:3px solid var(--acc);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--btn-bg);color:var(--btn-text);padding:10px 14px;border-radius:8px;z-index:100}
 .skip:focus{left:8px}
+.progress{position:fixed;top:0;left:0;right:0;height:3px;background:var(--acc);transform-origin:0 50%;transform:scaleX(0);z-index:60}
 
-/* Barra de progreso */
-.progress{position:fixed;top:0;left:0;height:3px;width:100%;z-index:20;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--violet),var(--pink),var(--amber))}
+/* ---------- Barra superior ---------- */
+.top{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid transparent}
+.top-in{max-width:1000px;margin:0 auto;padding:12px 20px 8px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px}
+.logo{font-family:var(--mono);font-weight:700;font-size:16px;text-decoration:none;margin-right:auto}
+.logo i{color:var(--acc);font-style:normal}
+.tools{display:flex;align-items:center;gap:8px}
+.tool{font-family:var(--mono);font-size:12.5px;font-weight:700;border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:999px;padding:7px 12px;cursor:pointer;min-height:36px;line-height:1}
+.tool:hover{border-color:var(--text)}
+.talk{font-size:13.5px;font-weight:700;background:var(--btn-bg);color:var(--btn-text);border-radius:999px;padding:9px 16px;text-decoration:none;min-height:36px;display:inline-flex;align-items:center;white-space:nowrap}
+.talk:hover{background:var(--acc);color:#fff}
+.nav{order:3;width:100%;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav ul{list-style:none;padding:0;display:flex;gap:4px;white-space:nowrap}
+.nav a{display:block;text-decoration:none;font-family:var(--mono);font-size:12.5px;font-weight:700;color:var(--muted);padding:7px 10px;border-radius:8px}
+.nav a:hover{color:var(--text)}
+.nav a.active{color:var(--text);box-shadow:inset 0 -2px 0 var(--acc)}
+@media(min-width:820px){.logo{margin-right:0}.top-in{flex-wrap:nowrap;gap:12px}.nav{order:1;width:auto;margin-left:auto}.tools{order:2}}
 
-/* Menú en píldora */
-.nav{position:fixed;top:12px;left:0;right:0;z-index:10;display:flex;justify-content:center;padding:0 12px;pointer-events:none}
-.nav ul{pointer-events:auto;display:flex;gap:2px;list-style:none;margin:0;padding:5px;max-width:100%;overflow-x:auto;scrollbar-width:none;background:color-mix(in srgb,var(--surface) 82%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:999px;box-shadow:var(--shadow)}
-.nav ul::-webkit-scrollbar{display:none}
-.nav a{display:block;white-space:nowrap;text-decoration:none;font-size:.875rem;font-weight:600;color:var(--muted);padding:8px 14px;border-radius:999px;transition:background .2s,color .2s}
-.nav a:hover{color:var(--text);background:color-mix(in srgb,var(--text) 7%,transparent)}
-.nav a.active{color:#fff;background:linear-gradient(135deg,var(--n1),var(--n2))}
-:root[data-theme="dark"] .nav a.active{color:#0F1115}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .nav a.active{color:#0F1115}}
+main{max-width:1000px;margin:0 auto;padding:12px 20px 40px}
+section{padding-top:64px}
+.eyebrow{font-family:var(--mono);font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--eyebrow);margin-bottom:8px}
+h1{font-size:clamp(42px,11vw,68px);line-height:1.03;letter-spacing:-.035em;font-weight:800}
+h1 .cur{display:inline-block;width:.09em;height:.82em;background:var(--acc);margin-left:.08em;vertical-align:-.05em;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+h2{font-size:clamp(26px,5.5vw,34px);line-height:1.15;letter-spacing:-.02em;font-weight:800;margin-bottom:18px}
+h3{font-size:18px;line-height:1.3;font-weight:800}
+p+p{margin-top:12px}
+.meta{font-size:14.5px;color:var(--muted)}
+.mono{font-family:var(--mono)}
 
-main{max-width:720px;margin:0 auto;padding:0 20px}
-section{padding:60px 0 8px}
-h2{display:flex;align-items:center;gap:12px;font-size:.8125rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:0 0 22px}
-h2::before{counter-increment:sec;content:counter(sec,decimal-leading-zero);font-size:.8125rem;font-weight:800;background:linear-gradient(135deg,var(--n1),var(--n2));-webkit-background-clip:text;background-clip:text;color:transparent}
-h2::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
-h3{font-size:1.0625rem;margin:0;font-weight:700}
-p{margin:0 0 14px}
-ul.list{margin:10px 0 0;padding-left:1.1rem}
-ul.list li{margin-bottom:8px}
-ul.list li::marker{color:var(--pink)}
+/* ---------- Hero ---------- */
+.hero{padding-top:20px}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:30px}
+@media(min-width:860px){.hero-grid{grid-template-columns:1.1fr .9fr;align-items:center;gap:48px}.hero{padding-top:40px}}
+.ph{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.avatar{width:68px;height:68px;border-radius:50%;object-fit:cover;object-position:50% 20%;border:3px solid var(--bg);box-shadow:0 0 0 2px var(--acc);flex:none}
+.ph .eyebrow{margin:0}
+.lead{font-size:18px;font-weight:500;margin:18px 0 22px;max-width:32em}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;font:inherit;font-weight:700;font-size:15px;padding:12px 20px;border-radius:12px;border:1.5px solid var(--text);background:transparent;color:var(--text);text-decoration:none;cursor:pointer;min-height:46px}
+.btn:hover{background:var(--text);color:var(--bg)}
+.btn.primary{background:var(--btn-bg);color:var(--btn-text);border-color:var(--btn-bg)}
+.btn.primary:hover{background:var(--acc);border-color:var(--acc);color:#fff}
 
-/* Hero */
-.hero{position:relative;text-align:center;padding:120px 0 40px}
-.bg{position:absolute;inset:-60px -50vw auto;height:680px;z-index:-1;overflow:hidden;pointer-events:none;-webkit-mask-image:linear-gradient(to bottom,#000 60%,transparent);mask-image:linear-gradient(to bottom,#000 60%,transparent)}
-.blob{position:absolute;border-radius:50%;filter:blur(70px);will-change:transform}
-.b1{width:340px;height:340px;left:14%;top:30px;background:var(--b1);animation:f1 16s ease-in-out infinite}
-.b2{width:380px;height:380px;right:12%;top:0;background:var(--b2);animation:f2 19s ease-in-out infinite}
-.b3{width:300px;height:300px;left:42%;top:260px;background:var(--b3);animation:f3 22s ease-in-out infinite}
-.b4{width:220px;height:220px;right:30%;top:380px;background:var(--b4);animation:f1 25s ease-in-out infinite reverse}
-@keyframes f1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(50px,40px) scale(1.12)}}
-@keyframes f2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-60px,50px) scale(1.08)}}
-@keyframes f3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-40px,-50px) scale(1.15)}}
+/* ---------- Terminal ---------- */
+.term{background:var(--term);color:var(--term-text);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);font-family:var(--mono)}
+.term .bar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--term-line);font-size:12.5px;color:var(--term-dim)}
+.term .dot{width:10px;height:10px;border-radius:50%;background:#3A3336}
+.term .t{margin-left:8px}
+.term .body{padding:18px 18px 8px;font-size:13.5px}
+.term .k{color:var(--term-key);font-size:11.5px;letter-spacing:.1em;margin-bottom:12px;text-transform:uppercase}
+.term .row{display:flex;gap:10px;margin-bottom:12px;line-height:1.5}
+.term .row .c{color:var(--term-ok);font-weight:700}
+.term .row b{color:#fff}
+.term .foot{display:flex;justify-content:space-between;padding:12px 18px;border-top:1px solid var(--term-line);font-size:12.5px;color:var(--term-dim)}
+.term .foot b{color:var(--term-ok)}
 
-.tools{position:absolute;top:70px;right:0;display:flex;gap:8px}
-.tool{cursor:pointer;font:inherit;font-weight:700;font-size:.8125rem;min-width:44px;height:36px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:color-mix(in srgb,var(--surface) 85%,transparent);color:var(--text);box-shadow:0 2px 10px rgba(20,24,31,.06);transition:transform .2s}
-.tool:hover{transform:translateY(-2px)}
+/* ---------- Tarjetas y listas ---------- */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px;margin-top:16px}
+.card:first-of-type{margin-top:0}
+.list{margin:12px 0 0;padding-left:20px}
+.list li{margin-top:8px}
+.list li::marker{color:var(--acc)}
+.job{position:relative;padding:0 0 0 22px;margin-top:30px;border-left:2px solid var(--line)}
+.job::before{content:"";position:absolute;left:-6px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--acc)}
+.job:first-of-type{margin-top:0}
+.tag{font-family:var(--mono);font-size:12.5px;font-weight:700;letter-spacing:.06em;color:var(--eyebrow);text-transform:uppercase}
 
-.ring{display:inline-block;padding:4px;border-radius:50%;background:conic-gradient(from var(--ang),var(--violet),var(--pink),var(--amber),var(--teal),var(--violet));animation:spin 9s linear infinite;box-shadow:0 10px 36px rgba(109,74,255,.25)}
-@keyframes spin{to{--ang:360deg}}
-.avatar{display:block;width:132px;height:132px;border-radius:50%;object-fit:cover;object-position:50% 20%;border:4px solid var(--bg)}
-h1{font-size:clamp(2.2rem,8.5vw,3.6rem);line-height:1.06;letter-spacing:-.03em;font-weight:800;margin:22px 0 10px}
-h1 .grad{background:linear-gradient(100deg,var(--n1),var(--n2) 60%,var(--n3));-webkit-background-clip:text;background-clip:text;color:transparent}
-.role{font-weight:600;color:var(--muted);margin:0 0 18px}
+/* ---------- Dominio ---------- */
+#dominio .card{border-top:3px solid var(--blue)}
+.head{display:flex;gap:14px;align-items:center}
+.ico{width:46px;height:46px;border-radius:12px;background:var(--blue-bg);color:var(--text);display:grid;place-items:center;flex:none;font-weight:800;font-size:20px}
+.ico svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 
-.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;list-style:none;padding:0;margin:0 0 24px}
-.chip{--c:var(--violet);display:inline-block;font-size:.8125rem;font-weight:600;padding:5px 12px;border-radius:999px;background:color-mix(in srgb,var(--c) 13%,var(--surface));border:1px solid color-mix(in srgb,var(--c) 38%,var(--line));color:var(--text)}
+/* ---------- Skills ---------- */
+.skills-grid{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:860px){.skills-grid{grid-template-columns:1.25fr 1fr}.skills-grid .card{margin-top:0}}
+.lvl{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.lvl .pip{width:12px;height:12px;border-radius:50%;flex:none}
+.lvl.d .pip{background:var(--olive)}
+.lvl.f .pip{background:transparent;border:2px solid var(--blue)}
+.sub{font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:16px 0 8px}
+.chips{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:14px;font-weight:600;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--bg)}
+.chips.d .chip{display:inline-flex;align-items:center;gap:7px}
+.chips.d .chip::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--olive);flex:none}
+.chips.f .chip{background:transparent;border:1.5px dashed var(--blue);color:var(--text)}
 
-.hero .chip:nth-child(2){--c:var(--teal)}
-.hero .chip:nth-child(3){--c:var(--amber)}
-.hero .chip:nth-child(4){--c:var(--pink)}
+/* ---------- Proyectos ---------- */
+.proj a.title{text-decoration:none;font-family:var(--mono);font-size:17px}
+.proj a.title{text-decoration:underline;text-decoration-color:var(--blue);text-decoration-thickness:2px;text-underline-offset:4px}
+.proj a.title:hover{color:var(--acc);text-decoration-color:var(--acc)}
+.found{margin-top:16px}
+.found .k{font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.found ul{list-style:none;padding:0}
+.found li::before{content:"✓ ";color:var(--acc);font-family:var(--mono);font-weight:700}
+.proj-skills .k{font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:16px 0 8px}
 
-.lead{font-size:1.1875rem;line-height:1.55;max-width:34em;margin:0 auto 26px;font-weight:500}
 
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:520px;margin:0 auto 28px}
-.stat{background:color-mix(in srgb,var(--surface) 88%,transparent);border:1px solid var(--line);border-radius:var(--radius);padding:14px 8px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-.stat b{display:block;font-size:1.6rem;line-height:1.1;font-weight:800;background:linear-gradient(135deg,var(--n1),var(--n2));-webkit-background-clip:text;background-clip:text;color:transparent}
-.stat span{display:block;font-size:.75rem;font-weight:600;color:var(--muted);margin-top:4px;line-height:1.3}
+/* ---------- Proyectos como reportes ---------- */
+.proj{padding:0;overflow:hidden}
+.proj .pbar{display:flex;align-items:center;gap:8px;padding:11px 18px;background:var(--term);color:var(--term-dim);font-family:var(--mono);font-size:12.5px;flex-wrap:wrap}
+.proj .pbar .dot{width:10px;height:10px;border-radius:50%;background:#3A3336;flex:none}
+.proj .pbar .path{margin-left:6px}
+.proj .pbar .st{margin-left:auto;color:var(--term-ok);font-weight:700}
+.proj .pbody{padding:22px}
+.found{background:var(--term);color:var(--term-text);border:0;border-radius:12px;padding:14px 16px;font-family:var(--mono)}
+.found .k{color:var(--term-key)}
+.found li{font-size:13.5px;line-height:1.5;margin-top:6px}
+.found li::before{color:var(--term-ok)}
+/* ---------- Prompt de contacto ---------- */
+.prompt{font-family:var(--mono);font-size:14px;color:var(--muted);margin-top:18px}
+.prompt b{color:var(--acc)}
+.prompt .cur2{display:inline-block;width:.55em;height:1em;background:var(--acc);vertical-align:-.15em;margin-left:2px;animation:blink 1.1s steps(1) infinite}
+@media (prefers-reduced-motion:reduce){.prompt .cur2{animation:none}}
 
-.cta{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
-.btn{display:inline-block;text-decoration:none;font-weight:700;font-size:.9375rem;padding:12px 22px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--text);box-shadow:0 2px 10px rgba(20,24,31,.06);transition:transform .2s,box-shadow .2s}
-.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(20,24,31,.12)}
-.btn.primary{background:linear-gradient(135deg,#5B3DF5,#D6336C);color:#fff;border-color:transparent}
-.btn.primary:hover{box-shadow:0 10px 26px rgba(214,51,108,.35)}
+/* ---------- Contacto ---------- */
+form{display:grid;gap:16px;margin-top:20px;max-width:560px}
+label{display:block;font-weight:700;font-size:15px;margin-bottom:6px}
+input,textarea{width:100%;font:inherit;color:var(--text);background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px}
+input:focus,textarea:focus{border-color:var(--text);outline:3px solid color-mix(in srgb,var(--acc) 45%,transparent);outline-offset:1px}
+textarea{min-height:140px;resize:vertical}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+#form-status{font-weight:700;display:none}
+#form-status.show{display:block}
+.contact-links a{font-weight:700;text-decoration-color:var(--blue);text-decoration-thickness:2px;text-underline-offset:3px}
+footer{max-width:1000px;margin:0 auto;padding:30px 20px 50px;color:var(--muted);font-size:14px;font-family:var(--mono)}
 
-/* Tarjetas */
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px;margin-bottom:14px;transition:transform .25s,border-color .25s,box-shadow .25s}
-.card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--violet) 45%,var(--line));box-shadow:var(--shadow)}
-.card p:last-child{margin-bottom:0}
-.meta{color:var(--muted);font-size:.9rem;font-weight:500;margin:2px 0 0}
-.head{display:flex;align-items:center;gap:14px}
-.ico{flex:none;width:44px;height:44px;border-radius:13px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--c1),var(--c2))}
-.ico svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.ico span{font-weight:800;font-size:1.15rem}
-
-/* Experiencia */
-.job{border-left:2px solid;border-image:linear-gradient(to bottom,var(--violet),var(--pink),transparent) 1;padding:0 0 30px 22px;margin-left:6px;position:relative}
-.job::before{content:"";position:absolute;left:-8px;top:5px;width:14px;height:14px;border-radius:50%;background:linear-gradient(135deg,var(--violet),var(--pink));box-shadow:0 0 0 4px var(--bg)}
-.job:last-child{padding-bottom:0}
-.tag{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.04em;color:var(--violet);margin-bottom:2px}
-
-/* Skills */
-.skillrow{margin-bottom:20px}
-.skillrow h3{font-size:.9375rem;margin-bottom:9px;display:flex;align-items:center;gap:8px}
-.skillrow h3::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--c)}
-.skillrow .chips{justify-content:flex-start;margin:0}
-.skillrow .chip{--c:inherit}
-.s1{--c:var(--violet)} .s2{--c:var(--teal)} .s3{--c:var(--amber)} .s4{--c:var(--pink)} .s5{--c:var(--blue)}
-.skillrow .chip{transition:transform .15s}
-.skillrow .chip:hover{transform:translateY(-2px)}
-
-/* Proyectos */
-.proj a.title{text-decoration:none}
-.proj a.title::after{content:" ↗";color:var(--pink);font-weight:800}
-.proj a.title:hover{text-decoration:underline}
-.proj.todo{border-style:dashed;background:transparent}
-.proj.todo:hover{transform:none;box-shadow:none}
-
-/* Formulario */
-form{display:grid;gap:14px}
-label{font-weight:600;font-size:.9375rem;display:block;margin-bottom:6px}
-input,textarea{width:100%;font:inherit;color:var(--text);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;transition:border-color .2s,box-shadow .2s}
-input:focus,textarea:focus{outline:none;border-color:var(--violet);box-shadow:0 0 0 3px color-mix(in srgb,var(--violet) 25%,transparent)}
-textarea{min-height:130px;resize:vertical}
-.hp{position:absolute;left:-9999px}
-button.btn{cursor:pointer;font:inherit;font-weight:700}
-.ok{display:none;padding:14px 16px;border-radius:12px;border:1px solid var(--teal);background:color-mix(in srgb,var(--teal) 12%,var(--surface));font-weight:600;margin-bottom:14px}
-.ok.show{display:block}
-footer{max-width:720px;margin:0 auto;padding:40px 20px 56px;color:var(--muted);font-size:.875rem;text-align:center}
-
-/* Aparición al hacer scroll */
-.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+/* ---------- Aparición ---------- */
+.js .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
 .js .reveal.in{opacity:1;transform:none}
-
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .blob,.ring{animation:none}
   .js .reveal{opacity:1;transform:none;transition:none}
-  .card,.btn,.tool,.chip{transition:none}
+  h1 .cur{animation:none}
 }
+@media print{.top,.progress{display:none}body{background:#fff;background-image:none}}
 </style>
 </head>
 <body>
 <a class="skip" href="#contenido" data-en="Skip to content">Ir al contenido</a>
 <div class="progress" id="bar" aria-hidden="true"></div>
 
-<nav class="nav" aria-label="Principal" data-en-label="Main">
-  <ul>
-    <li><a href="#sobre-mi" data-en="About">Sobre mí</a></li>
-    <li><a href="#experiencia" data-en="Experience">Experiencia</a></li>
-    <li><a href="#dominio" data-en="Domain">Dominio</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#proyectos" data-en="Projects">Proyectos</a></li>
-    <li><a href="#contacto" data-en="Contact">Contacto</a></li>
-  </ul>
-</nav>
-
-<main id="contenido">
-
-  <header class="hero">
-    <div class="bg" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div></div>
+<header class="top">
+  <div class="top-in">
+    <a class="logo" href="#" aria-label="Florencia Nakasone">fn<i>_</i></a>
     <div class="tools">
       <button class="tool" id="btn-lang" type="button" aria-label="Switch to English">EN</button>
       <button class="tool" id="btn-theme" type="button" aria-label="Cambiar a modo oscuro">☾</button>
+      <a class="talk" href="#contacto" data-en="Write to me →">Escribime →</a>
     </div>
-    <div class="ring"><img class="avatar" src="foto.jpg" width="132" height="132" alt="Florencia Nakasone"></div>
-    <h1>Florencia <span class="grad">Nakasone</span></h1>
-    <p class="role" data-en="Semi-Senior QA Engineer · Buenos Aires">QA Engineer SSr · Buenos Aires</p>
-    <ul class="chips" aria-label="Áreas" data-en-label="Areas">
-      <li class="chip">Core Banking</li>
-      <li class="chip" data-en="APIs and SQL">APIs y SQL</li>
-      <li class="chip" data-en="Tax withholdings">Retenciones impositivas</li>
-      <li class="chip" data-en="AI testing (in training)">Testing con IA (en formación)</li>
-    </ul>
-    <p class="lead" data-en="QA Engineer with 5 years in Core Banking: REST API testing, data validation with SQL, automated BDD cases and end-to-end testing on Mambu. My strongest areas are tax withholdings and accounting reconciliation. I'm looking for QA and Technical Functional Analyst roles in fintech and banking.">QA Engineer con 5 años en Core Banking: testing de APIs REST, validación de datos con SQL, casos BDD automatizados y pruebas end to end sobre Mambu. Mi fuerte está en retenciones impositivas y conciliación contable. Busco roles de QA y de Analista Técnico Funcional en fintech y banca.</p>
-    <div class="stats">
-      <div class="stat"><b>5</b><span data-en="years in QA">años en QA</span></div>
-      <div class="stat"><b data-en="Semi-Sr">SSr</b><span data-en="from Trainee level">desde Trainee</span></div>
-      <div class="stat"><b>Mambu</b><span>Core Banking</span></div>
+    <nav class="nav" aria-label="Principal" data-en-label="Main">
+      <ul>
+        <li><a href="#sobre-mi" data-en="About">Sobre mí</a></li>
+        <li><a href="#experiencia" data-en="Experience">Experiencia</a></li>
+        <li><a href="#dominio" data-en="Domain">Dominio</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#proyectos" data-en="Projects">Proyectos</a></li>
+        <li><a href="#contacto" data-en="Contact">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+
+  <div class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="ph">
+          <img class="avatar" src="foto.jpg" width="68" height="68" alt="Florencia Nakasone">
+          <p class="eyebrow" data-en="Semi-Senior QA Engineer · Buenos Aires">QA Engineer SSr · Buenos Aires</p>
+        </div>
+        <h1>Florencia<br>Nakasone<span class="cur" aria-hidden="true"></span></h1>
+        <p class="lead" data-en="QA Engineer with 5 years in Core Banking: REST API testing, data validation with SQL, automated BDD cases and end-to-end testing on Mambu. My strongest areas are tax withholdings and accounting reconciliation. I'm looking for QA and Technical Functional Analyst roles in fintech and banking.">QA Engineer con 5 años en Core Banking: testing de APIs REST, validación de datos con SQL, casos BDD automatizados y pruebas end to end sobre Mambu. Mi fuerte está en retenciones impositivas y conciliación contable. Busco roles de QA y de Analista Técnico Funcional en fintech y banca.</p>
+        <div class="cta">
+          <a class="btn primary" href="https://www.linkedin.com/in/flornakasone/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://github.com/Flornakasone" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="Florencia_Nakasone_CV.pdf" target="_blank" rel="noopener" data-en="View CV (PDF, in Spanish)">Ver CV (PDF)</a>
+        </div>
+      </div>
+      <div class="term" role="group" aria-label="Hallazgos" data-en-label="Findings">
+        <div class="bar" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="t" data-en="findings.spec">hallazgos.spec</span></div>
+        <div class="body">
+          <p class="k" data-en="What I found while testing">Lo que encontré probando</p>
+          <div class="row"><span class="c" aria-hidden="true">✓</span><span data-en="The model <b>invented requirements</b> that were not in the posting">El modelo <b>inventaba requisitos</b> que no estaban en el aviso</span></div>
+          <div class="row"><span class="c" aria-hidden="true">✓</span><span data-en="<b>2 of 10</b> companies suggested by an AI had <b>false data</b>"><b>2 de 10</b> empresas que sugirió una IA tenían <b>datos falsos</b></span></div>
+          <div class="row"><span class="c" aria-hidden="true">✓</span><span data-en="<b>Withholdings</b> applied wrongly because of outdated registries"><b>Retenciones</b> mal aplicadas por padrones desactualizados</span></div>
+          <div class="row"><span class="c" aria-hidden="true">✓</span><span data-en="<b>Rounding</b> and <b>cache</b> errors in the calculation">Errores de <b>redondeo</b> y de <b>caché</b> en el cálculo</span></div>
+        </div>
+        <div class="foot" aria-hidden="true"><span data-en="findings.spec">hallazgos.spec</span><b>4 / 4 ✓</b></div>
+      </div>
     </div>
-    <div class="cta">
-      <a class="btn primary" href="https://www.linkedin.com/in/flornakasone/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="btn" href="https://github.com/Flornakasone" target="_blank" rel="noopener">GitHub</a>
-      <a class="btn" href="Florencia_Nakasone_CV.pdf" target="_blank" rel="noopener" data-en="View CV (PDF, in Spanish)">Ver CV (PDF)</a>
-    </div>
-  </header>
+  </div>
 
   <section id="sobre-mi" aria-labelledby="t-sobre">
-    <h2 id="t-sobre" data-en="About me">Sobre mí</h2>
+    <p class="eyebrow" data-en="01 / About me">01 / Sobre mí</p>
+    <h2 id="t-sobre" data-en="Test, verify, leave evidence.">Probar, verificar, dejar evidencia.</h2>
     <p data-en="I started in QA as a Trainee on the Core Banking team at Naranja X and worked up to Semi-Senior. I do functional, smoke, regression and end-to-end testing on REST APIs, microservices, databases and web and mobile apps. I report defects working alongside Development.">Empecé en QA como Trainee en el equipo de Core Banking de Naranja X y llegué a SSr. Hago testing funcional, smoke, regresión y end to end sobre APIs REST, microservicios, base de datos y apps web y mobile. Reporto los defectos trabajando junto a Desarrollo.</p>
     <p data-en="My work sat between QA and functional analysis: I took part in requirements gathering with Tax, Accounting and Development to define test scenarios before development.">Mi trabajo estuvo en el cruce entre QA y análisis funcional: participé en el relevamiento con Impuestos, Contabilidad y Desarrollo para definir escenarios de prueba antes del desarrollo.</p>
     <p data-en="I use Claude, GitHub Copilot and Jira Rovo AI day to day, and I'm taking a course on AI testing and autonomous agents.">Uso Claude, GitHub Copilot y Jira Rovo AI en el día a día, y estoy cursando una formación de testing con IA y agentes autónomos.</p>
@@ -249,10 +276,11 @@ footer{max-width:720px;margin:0 auto;padding:40px 20px 56px;color:var(--muted);f
   </section>
 
   <section id="experiencia" aria-labelledby="t-exp">
-    <h2 id="t-exp" data-en="Experience">Experiencia</h2>
+    <p class="eyebrow" data-en="02 / Experience">02 / Experiencia</p>
+    <h2 id="t-exp" data-en="Where I've worked">Dónde trabajé</h2>
 
     <article class="job">
-      <p class="tag" data-en="2023 – JUN 2026">2023 – JUN. 2026</p>
+      <p class="tag" data-en="2023 – Jun 2026">2023 – jun. 2026</p>
       <h3 data-en="Semi-Senior QA Engineer · Naranja X">QA Engineer SSr · Naranja X</h3>
       <p class="meta" data-en="Core Banking, Mambu integration with internal services">Core Banking, integración de Mambu con servicios internos</p>
       <ul class="list">
@@ -285,10 +313,11 @@ footer{max-width:720px;margin:0 auto;padding:40px 20px 56px;color:var(--muted);f
   </section>
 
   <section id="dominio" aria-labelledby="t-dom">
-    <h2 id="t-dom" data-en="Domain">Dominio</h2>
+    <p class="eyebrow" data-en="03 / Domain">03 / Dominio</p>
+    <h2 id="t-dom" data-en="Business domain">Dominio del negocio</h2>
     <div class="card">
       <div class="head">
-        <div class="ico" style="--c1:#6D4AFF;--c2:#2F7DF6" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 10 12 4l9 6"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8"/><path d="M3 20h18"/></svg></div>
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 10 12 4l9 6"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8"/><path d="M3 20h18"/></svg></div>
         <div>
           <h3 data-en="Core Banking and Mambu">Core Banking y Mambu</h3>
           <p class="meta" data-en="Mambu integration with internal services">Integración de Mambu con servicios internos</p>
@@ -298,7 +327,7 @@ footer{max-width:720px;margin:0 auto;padding:40px 20px 56px;color:var(--muted);f
     </div>
     <div class="card">
       <div class="head">
-        <div class="ico" style="--c1:#E8960C;--c2:#E63B7A" aria-hidden="true"><span>%</span></div>
+        <div class="ico" aria-hidden="true"><span>%</span></div>
         <div>
           <h3 data-en="Tax withholdings">Retenciones impositivas</h3>
           <p class="meta">IVA, IIBB, SIRCREB, SIRTAC, ARBA</p>
@@ -308,7 +337,7 @@ footer{max-width:720px;margin:0 auto;padding:40px 20px 56px;color:var(--muted);f
     </div>
     <div class="card">
       <div class="head">
-        <div class="ico" style="--c1:#0FA58B;--c2:#2F7DF6" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 8h14l-3-3"/><path d="M20 16H6l3 3"/></svg></div>
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 8h14l-3-3"/><path d="M20 16H6l3 3"/></svg></div>
         <div>
           <h3 data-en="Accounting reconciliation">Conciliación contable</h3>
           <p class="meta" data-en="ERP integration · basic accounting">Integración con ERP · contabilidad básica</p>
@@ -319,58 +348,89 @@ footer{max-width:720px;margin:0 auto;padding:40px 20px 56px;color:var(--muted);f
   </section>
 
   <section id="skills" aria-labelledby="t-skills">
-    <h2 id="t-skills" data-en="QA skills and tools">Skills de QA y herramientas</h2>
-    <div class="skillrow s1">
-      <h3>Testing</h3>
-      <ul class="chips">
-        <li class="chip" data-en="Functional">Funcional</li><li class="chip">Smoke</li><li class="chip" data-en="Regression">Regresión</li><li class="chip" data-en="Integration">Integración</li><li class="chip">E2E</li><li class="chip" data-en="Exploratory">Exploratorio</li><li class="chip" data-en="Web and mobile">Web y mobile</li><li class="chip" data-en="Test case design">Diseño de casos</li><li class="chip">BDD / Gherkin</li><li class="chip" data-en="Defect reporting">Reporte de defectos</li>
-      </ul>
-    </div>
-    <div class="skillrow s2">
-      <h3 data-en="APIs and databases">APIs y bases de datos</h3>
-      <ul class="chips">
-        <li class="chip">APIs REST</li><li class="chip">Postman</li><li class="chip">SQL</li><li class="chip">PostgreSQL</li><li class="chip">MySQL</li><li class="chip">DBeaver</li>
-      </ul>
-    </div>
-    <div class="skillrow s3">
-      <h3 data-en="Tools">Herramientas</h3>
-      <ul class="chips">
-        <li class="chip">Jira</li><li class="chip">Zephyr</li><li class="chip">BSTM</li><li class="chip">Confluence</li><li class="chip">Git</li><li class="chip">GitLab</li><li class="chip">BrowserStack</li><li class="chip">Android Studio</li>
-      </ul>
-    </div>
-    <div class="skillrow s4">
-      <h3 data-en="Infrastructure and monitoring">Infraestructura y monitoreo</h3>
-      <ul class="chips">
-        <li class="chip">AWS S3</li><li class="chip">AWS SQS</li><li class="chip">Datadog</li>
-      </ul>
-    </div>
-    <div class="skillrow s5">
-      <h3 data-en="AI and methodologies">IA y metodologías</h3>
-      <ul class="chips">
-        <li class="chip">Claude</li><li class="chip">GitHub Copilot</li><li class="chip">Jira Rovo AI</li><li class="chip">Scrum</li>
-      </ul>
+    <p class="eyebrow">04 / Skills</p>
+    <h2 id="t-skills" data-en="Skills and tools">Skills y herramientas</h2>
+    <div class="skills-grid">
+      <div class="card">
+        <div class="lvl d"><span class="pip" aria-hidden="true"></span><h3 data-en="Daily use (at work)">Uso a diario (en el trabajo)</h3></div>
+        <p class="sub" data-en="Testing">Testing</p>
+        <ul class="chips d">
+          <li class="chip" data-en="Functional">Funcional</li><li class="chip">Smoke</li><li class="chip" data-en="Regression">Regresión</li><li class="chip" data-en="Integration">Integración</li><li class="chip">E2E</li><li class="chip" data-en="Exploratory">Exploratorio</li><li class="chip" data-en="Web and mobile">Web y mobile</li><li class="chip" data-en="Test case design">Diseño de casos</li><li class="chip">BDD / Gherkin</li><li class="chip" data-en="Defect reporting">Reporte de defectos</li>
+        </ul>
+        <p class="sub" data-en="APIs and databases">APIs y bases de datos</p>
+        <ul class="chips d">
+          <li class="chip">APIs REST</li><li class="chip">Postman</li><li class="chip">SQL</li><li class="chip">PostgreSQL</li><li class="chip">MySQL</li><li class="chip">DBeaver</li>
+        </ul>
+        <p class="sub" data-en="Tools">Herramientas</p>
+        <ul class="chips d">
+          <li class="chip">Jira</li><li class="chip">Zephyr</li><li class="chip">BSTM</li><li class="chip">Confluence</li><li class="chip">Git</li><li class="chip">GitLab</li><li class="chip">BrowserStack</li><li class="chip">Android Studio</li>
+        </ul>
+        <p class="sub" data-en="Infrastructure and monitoring">Infraestructura y monitoreo</p>
+        <ul class="chips d">
+          <li class="chip">AWS S3</li><li class="chip">AWS SQS</li><li class="chip">Datadog</li>
+        </ul>
+        <p class="sub" data-en="AI and methodologies">IA y metodologías</p>
+        <ul class="chips d">
+          <li class="chip">Claude</li><li class="chip">GitHub Copilot</li><li class="chip">Jira Rovo AI</li><li class="chip">Scrum</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="lvl f"><span class="pip" aria-hidden="true"></span><h3 data-en="In training (course and projects)">En formación (curso y proyectos)</h3></div>
+        <p class="meta" style="margin-top:6px" data-en="Things I'm learning and have applied in my own projects, not yet in a job.">Lo que estoy aprendiendo y apliqué en proyectos propios, todavía no en un trabajo.</p>
+        <ul class="chips f" style="margin-top:16px">
+          <li class="chip" data-en="AI testing">Testing con IA</li><li class="chip">Playwright MCP</li><li class="chip" data-en="Custom MCP">MCP propio</li><li class="chip">Qase</li><li class="chip">TDD</li><li class="chip">Test doubles</li><li class="chip">Contract testing</li><li class="chip">GitHub Actions</li><li class="chip" data-en="LLM output evaluation">Evaluación de salidas de LLMs</li><li class="chip">Prompt injection</li>
+        </ul>
+      </div>
     </div>
   </section>
 
   <section id="proyectos" aria-labelledby="t-proy">
+    <p class="eyebrow" data-en="05 / Projects">05 / Proyectos</p>
     <h2 id="t-proy" data-en="Projects">Proyectos</h2>
 
     <article class="card proj">
+      <div class="pbar" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="path">~/proyectos/minimoda-test</span><span class="st" data-en="course · in progress">curso · en progreso</span></div>
+      <div class="pbody">
       <h3><a class="title" href="https://github.com/Flornakasone/minimoda-test" target="_blank" rel="noopener">minimoda-test</a></h3>
       <p class="meta" data-en="AI testing · Academia QA">Testing con IA · Academia QA</p>
-      <p style="margin-top:10px" data-en="Practice work from the TestingAI course (Academia QA) on MiniModa, a fictional online store. Class 1: test cases for the sign-up form written with AI and loaded in Qase, with password and age boundary values. Class 2: an agent using Playwright MCP and a custom MCP to generate test cases, with measured times and the limits I found, such as made-up data that I corrected by hand against the real store.">Práctica del curso TestingAI (Academia QA) sobre MiniModa, una tienda online ficticia. Clase 1: casos de prueba del formulario de registro hechos con IA y cargados en Qase, con valores límite de contraseña y edad. Clase 2: agente con Playwright MCP y un MCP propio para generar casos de prueba, con tiempos medidos y los límites que encontré, como datos inventados que corregí a mano contra la tienda real.</p>
+      <p style="margin-top:10px" data-en="Practice work from the TestingAI course (Academia QA) on MiniModa, a fictional online store. Class 1: test cases for the sign-up form written with AI and loaded in Qase, with password and age boundary values. Class 2: an agent using Playwright MCP and a custom MCP to generate test cases, with measured times and the limits I found.">Práctica del curso TestingAI (Academia QA) sobre MiniModa, una tienda online ficticia. Clase 1: casos de prueba del formulario de registro hechos con IA y cargados en Qase, con valores límite de contraseña y edad. Clase 2: agente con Playwright MCP y un MCP propio para generar casos de prueba, con tiempos medidos y los límites que encontré.</p>
+      <div class="found">
+        <p class="k" data-en="What I found">Qué encontré</p>
+        <ul><li data-en="The AI made up store data; I corrected it by hand against the real store.">La IA inventó datos de la tienda; los corregí a mano contra la tienda real.</li></ul>
+      </div>
+      <div class="proj-skills">
+        <p class="k" data-en="Skills">Aptitudes</p>
+        <ul class="chips"><li class="chip" data-en="Test case design">Diseño de casos</li><li class="chip" data-en="Boundary values">Valores límite</li><li class="chip">Qase</li><li class="chip">Playwright MCP</li><li class="chip" data-en="Custom MCP">MCP propio</li><li class="chip">Gemini</li><li class="chip">Codex</li><li class="chip">GitHub</li></ul>
+      </div>
+      </div>
     </article>
 
     <article class="card proj">
+      <div class="pbar" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="path">~/proyectos/job-finder-bot-template</span><span class="st" data-en="public template · 500+ tests">plantilla pública · 500+ tests</span></div>
+      <div class="pbody">
       <h3><a class="title" href="https://github.com/Flornakasone/job-finder-bot-template" target="_blank" rel="noopener">job-finder-bot-template</a></h3>
       <p class="meta" data-en="AI automation">Automatización con IA</p>
       <p style="margin-top:10px" data-en="Job-search agent that I designed with AI. Every day it reviews about 1,000 job postings, keeps the ones that fit the profile and sends a Telegram summary with a match % and an evaluation of which requirements are met and which are missing. The AI wrote the code: I defined the acceptance criteria, reviewed every change and checked the model's answers against the text of each posting. More than 500 tests. It runs on GitHub Actions at no cost and is published as a template so other people can use it.">Agente de búsqueda laboral que diseñé con IA. Cada día revisa unas 1.000 ofertas, se queda con las que encajan con el perfil y manda a Telegram un resumen con % de match y una evaluación de qué requisitos se cumplen y cuáles faltan. La IA escribió el código: yo definí los criterios de aceptación, revisé cada cambio y verifiqué las respuestas del modelo contra el texto de cada aviso. Más de 500 tests. Corre en GitHub Actions, sin costo, y está publicado como plantilla para que otras personas lo usen.</p>
+      <div class="found">
+        <p class="k" data-en="What I found">Qué encontré</p>
+        <ul>
+          <li data-en="The model invented requirements that were not in the posting.">El modelo inventaba requisitos que no estaban en el aviso.</li>
+          <li data-en="2 of 10 companies suggested by an AI had false data.">2 de 10 empresas que sugirió una IA tenían datos falsos.</li>
+        </ul>
+      </div>
+      <div class="proj-skills">
+        <p class="k" data-en="Skills">Aptitudes</p>
+        <ul class="chips"><li class="chip">TDD</li><li class="chip">Test doubles</li><li class="chip">Contract testing</li><li class="chip" data-en="REST APIs">APIs REST</li><li class="chip">GitHub Actions</li><li class="chip" data-en="LLM output evaluation">Evaluación de salidas de LLMs</li><li class="chip">Prompt injection</li><li class="chip" data-en="Git and Pull Requests">Git y Pull Requests</li></ul>
+      </div>
+      </div>
     </article>
   </section>
 
   <section id="contacto" aria-labelledby="t-cont">
-    <h2 id="t-cont" data-en="Contact">Contacto</h2>
+    <p class="eyebrow" data-en="06 / Contact">06 / Contacto</p>
+    <h2 id="t-cont" data-en="Write to me">Escribime</h2>
     <p data-en="Write me and I'll reply by email.">Escribime y te respondo por mail.</p>
+    <p class="prompt" aria-hidden="true"><b>&gt;</b> <span data-en="waiting for your message">esperando tu mensaje</span><span class="cur2"></span></p>
     <form id="form-contacto">
       <input class="hp" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div>
@@ -388,13 +448,13 @@ footer{max-width:720px;margin:0 auto;padding:40px 20px 56px;color:var(--muted);f
       <button class="btn primary" type="submit" data-en="Send message">Enviar mensaje</button>
     </form>
     <p id="form-status" class="ok" role="status" style="margin-top:14px"></p>
-    <p class="meta" style="margin-top:14px" data-en="Or write to <a href='mailto:flornakasone@gmail.com'>flornakasone@gmail.com</a>">O escribime a <a href="mailto:flornakasone@gmail.com">flornakasone@gmail.com</a></p>
+    <p class="meta contact-links" style="margin-top:14px" data-en="Or write to <a href='mailto:flornakasone@gmail.com'>flornakasone@gmail.com</a>">O escribime a <a href="mailto:flornakasone@gmail.com">flornakasone@gmail.com</a></p>
   </section>
 
 </main>
 
 <footer>
-  <p>© <span id="anio">2026</span> Florencia Nakasone</p>
+  <p>© <span id="anio">2026</span> Florencia Nakasone · exit code 0</p>
 </footer>
 
 <script>
@@ -463,7 +523,7 @@ footer{max-width:720px;margin:0 auto;padding:40px 20px 56px;color:var(--muted);f
   onScroll();
 
   /* ---------- Aparición al scroll y menú activo ---------- */
-  var revealEls = document.querySelectorAll('section > *, .job, .hero .stats, .hero .cta');
+  var revealEls = document.querySelectorAll('section > *, .job, .hero .term, .hero .cta');
   revealEls.forEach(function(el){ el.classList.add('reveal'); });
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function(entries){
@@ -491,7 +551,7 @@ footer{max-width:720px;margin:0 auto;padding:40px 20px 56px;color:var(--muted);f
   }
 
   /* ---------- Formulario de contacto ---------- */
-  var WEB3FORMS_KEY = '';   /* <- pegá acá tu Access Key de Web3Forms (puede ser pública) */
+  var WEB3FORMS_KEY = '35eae07a-666a-457e-a73c-e715b13c5c8a';
   var MAIL = 'flornakasone@gmail.com';
   var form = document.getElementById('form-contacto');
   var statusEl = document.getElementById('form-status');
